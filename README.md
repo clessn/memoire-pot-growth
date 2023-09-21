@@ -14,5 +14,5 @@ List of the folders and their function/description.
 **the `data` folder is in the `_SharedFolder_memoire-pot-growth`, which is available on request.**
 
 List of the folders and their function/description.
-- `warehouse` : this folder is used to stock warehouse tables. Datasets in this folder are structured tables from different sources (public opinion surveys, expert surveys, census data). They are not ready to be analyzed. They are mostly treated in the `code/
+- `warehouse` : this folder is used to stock warehouse tables. Datasets in this folder are structured tables from different sources (public opinion surveys, expert surveys, census data). They are not ready to be analyzed. They are mostly treated in the `code/refining` folder to create `marts`.
 - 
