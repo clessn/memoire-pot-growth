@@ -219,3 +219,44 @@ fc <- factanal(all %>% filter(quebec == 0) %>%
               factors = 1)
 fc$loadings
 
+
+# Macro indicator ---------------------------------------------------------
+
+graph <- all %>% 
+  mutate(neutral = clessnverse::normalize_min_max(neutral),
+         extreme = clessnverse::normalize_min_max(extreme),
+         macro = (neutral + extreme) / 2,
+         name = case_when(
+           name == "issGapRichPoorALL" ~ "Faire +\nRéduire gap riches-pauvres",
+           name == "issWomDoneALL" ~ "Faire +\npour les femmes",
+           name == "issQcDoneALL" ~ "Faire +\npour le Québec"
+         ),
+         quebec = ifelse(quebec == 1, "Québec", "ROC")) %>% 
+  select(-noanswer) %>% 
+  pivot_longer(cols = c("neutral", "extreme", "macro"),
+               names_to = "indicator",
+               values_to = "value")
+
+ggplot(graph, aes(x = year, y = value)) +
+  geom_point(aes(color = quebec,
+               alpha = indicator)) +
+  geom_line(aes(group = interaction(name, quebec, indicator),
+                color = quebec,
+                alpha = indicator,
+                linetype = indicator)) +
+  facet_grid(cols = vars(name),
+             rows = vars(quebec)) +
+  ylab("Indicateur de clivage") +
+  clessnverse::theme_clean_light() +
+  scale_color_manual(values = c("Québec" = "lightblue",
+                                "ROC" = "darkred")) +
+  scale_alpha_manual(values = c("macro" = 1,
+                                "neutral" = 0.4,
+                                "extreme" = 0.4)) +
+  scale_linetype_manual(values = c("macro" = "solid",
+                                   "neutral" = "dashed",
+                                   "extreme" = "dotted")) +
+  scale_x_continuous(breaks = c(seq(1990, 2025, by = 5)))
+
+ggsave("_SharedFolder_memoire-pot-growth/graphs/explo/macroindicator.png",
+       width = 8, height = 4)
