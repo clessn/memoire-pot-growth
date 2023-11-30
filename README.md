@@ -16,3 +16,5 @@ List of the folders and their function/description.
 List of the folders and their function/description.
 - `warehouse` : this folder is used to stock warehouse tables. Datasets in this folder are structured tables from different sources (public opinion surveys, expert surveys, census data). They are not ready to be analyzed. They are mostly treated in the `code/refining` folder to create `marts`.
 - 
+
+End goal: modify **position of party on issue**, which then modifies party's position on structural axis. NEED TO TEST: input axis into regressions or issues directly? KEEP THE ONE WITH BIGGER EFFECT
