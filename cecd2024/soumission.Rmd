@@ -1,0 +1,16 @@
+---
+title: 'Optimizing Electoral Strategies in Quebec''s Multiparty System: A Machine
+  Learning Approach to Assessing Party Potential for Growth'
+author: "Hubert Cadieux"
+contact: "hubert.cadieux.1@ulaval.ca"
+date: "12 janvier 2024"
+output: pdf_document
+---
+
+How can the potential for electoral growth of political parties in multiparty systems be operationnalized? This article investigates the room to maneuver that political parties in Quebec have across ideological spectrums to optimize their electoral strategies within a multiparty system and therefore estimate their potential for growth. It narrows its focus to the issue-specific segment of the funnel of causality, as it is postulated that the potential for growth is at play within this block. This postulate is grounded in the theory that information sources are fragmented in today's media landscape and that issue saliency is heterogeneous across various socio-demographic publics. Building on this postulate, the article employs exclusive survey data and an innovative continuous measure of voting intention, the RCI, to undertake combinatorial optimization using machine learning techniques. This method will output the ideal sets of party positions that could maximize their electoral support, providing a data-driven foundation for strategic party positioning within Quebec's multiparty system. This article contributes to the study of public opinion and political marketing by producing a nuanced measure of parties' potential performances by using innovative methods.
+
+État d'avancement prévu: en étant à ma première session à la maîtrise cet hiver, je compte avoir un cadre théorique clair et être rendu à l'étape d'explorer mes données au moment de présenter étant donné que j'ai commencé à travailler sur ce projet avant mon entrée à la maîtrise. Je compte aussi être capable d'expliquer les méthodes d'apprentissage automatique que je compte utiliser et pourquoi elles sont pertinentes à ce que j'essaie de faire.
+
+Courriel: hubert.cadieux.1@ulaval.ca  
+Maîtrise en science politique à l'Université Laval  
+Superviseur.e.s: Yannick Dufresne yannick.dufresne@pol.ulaval.ca et Catherine Ouellet catherine.ouellet.18@umontreal.ca

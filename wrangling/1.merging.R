@@ -1,6 +1,5 @@
 # Packages ----------------------------------------------------------------
 library(tidyverse)
-library(mice)
 source("functions/refining.R", encoding = "UTF-8")
 
 # Data --------------------------------------------------------------------
@@ -25,7 +24,7 @@ CleanData <- data.frame(
 table(CleanData$region)
 
 
-# # ! Respondents to keep pilote 1 ----------------------------------------
+## ! Respondents to keep pilote 1 ----------------------------------------
 
 ## in this survey, some respondents were removed in the cleaning.
 clean_survey <- sondr::read_any_csv("_SharedFolder_memoire-pot-growth/data/lake/datagotchi_pilot1_2022/Pilote1_clean.csv")
@@ -75,30 +74,30 @@ Check <- Data %>%
   pivot_wider(names_from = source_id,
               values_from = there)
 
-# SES (age, educ, income, gender, lang, religion/religiosity) -----------------------------------
+# SES (age, educ, income, gender, lang, religion, religiosity) -----------------------------------
 
-# Age ---------------------------------------------------------------------
+## Age ---------------------------------------------------------------------
 CleanData$age <- Data$ses_age_final
 CleanData$age[CleanData$age==15] <- 18
 CleanData$age_cat <- Data$ageC
 
-# Educ --------------------------------------------------------------------
+## Educ --------------------------------------------------------------------
 CleanData$educ <- Data$educ
 
-# Income ------------------------------------------------------------------
+## Income ------------------------------------------------------------------
 CleanData$income <- Data$income
 
-# Male --------------------------------------------------------------------
+## Male --------------------------------------------------------------------
 CleanData$male <- Data$male
 
-# Lang --------------------------------------------------------------------
+## Lang --------------------------------------------------------------------
 CleanData$lang <- Data$lang
 
-# Religion ----------------------------------------------------------------
+## Religion ----------------------------------------------------------------
 
 CleanData$religion <- NA
 
-## omnibus january ---------------------------------------------------------
+### omnibus january ---------------------------------------------------------
 rel_raw <- sondr::load_variable(file = "_SharedFolder_memoire-pot-growth/data/lake/omnibus/january/january.Sav",
                             variable = "C1")
 table(rel_raw)
@@ -112,7 +111,7 @@ table(rel_clean)
 
 CleanData$religion[CleanData$source_id == "january"] <- rel_clean
 
-## omnibus february ---------------------------------------------------------
+### omnibus february ---------------------------------------------------------
 rel_raw <- sondr::load_variable(file = "_SharedFolder_memoire-pot-growth/data/lake/omnibus/february/february.Sav",
                                 variable = "C1")
 table(rel_raw)
@@ -126,7 +125,7 @@ table(rel_clean)
 
 CleanData$religion[CleanData$source_id == "february"] <- rel_clean
 
-## omnibus march ---------------------------------------------------------
+### omnibus march ---------------------------------------------------------
 rel_raw <- sondr::load_variable(file = "_SharedFolder_memoire-pot-growth/data/lake/omnibus/march/march.Sav",
                                 variable = "C1")
 table(rel_raw)
@@ -140,7 +139,7 @@ table(rel_clean)
 
 CleanData$religion[CleanData$source_id == "march"] <- rel_clean
 
-## omnibus april ---------------------------------------------------------
+### omnibus april ---------------------------------------------------------
 rel_raw <- sondr::load_variable(file = "_SharedFolder_memoire-pot-growth/data/lake/omnibus/april/april.Sav",
                                 variable = "C1")
 table(rel_raw)
@@ -154,7 +153,7 @@ table(rel_clean)
 
 CleanData$religion[CleanData$source_id == "april"] <- rel_clean
 
-## omnibus may ---------------------------------------------------------
+### omnibus may ---------------------------------------------------------
 rel_raw <- sondr::load_variable(file = "_SharedFolder_memoire-pot-growth/data/lake/omnibus/may/may.Sav",
                                 variable = "C1")
 table(rel_raw)
@@ -168,7 +167,7 @@ table(rel_clean)
 
 CleanData$religion[CleanData$source_id == "may"] <- rel_clean
 
-## pilote 1 ---------------------------------------------------------
+### pilote 1 ---------------------------------------------------------
 rel_raw <- as.vector(haven::read_sav("_SharedFolder_memoire-pot-growth/data/lake/datagotchi_pilot1_2022/ULA12-BASE-1500.sav")$Q5)
 rel_raw <- rel_raw[respondents_to_keep_pilote1]
 table(rel_raw)
@@ -182,8 +181,7 @@ table(rel_clean)
 
 CleanData$religion[CleanData$source_id == "pilote1"] <- rel_clean
 
-
-## pilote 2 ---------------------------------------------------------
+### pilote 2 ---------------------------------------------------------
 rel_raw_fr <- sondr::load_variable(file = "_SharedFolder_memoire-pot-growth/data/lake/datagotchi_pilot2_2022/datagotchi_pilot2_2022.csv",
                                 variable = "religion")[-c(1, 2)]
 rel_raw_fr[rel_raw_fr == ""] <- NA
@@ -207,11 +205,11 @@ table(rel_clean)
 
 CleanData$religion[CleanData$source_id == "pilote2"] <- rel_clean
 
-# Religiosity -------------------------------------------------------------
+## Religiosity -------------------------------------------------------------
 
 CleanData$religiosity <- NA
 
-## omnibus january ---------------------------------------------------------
+### omnibus january ---------------------------------------------------------
 rel_raw <- sondr::load_variable(file = "_SharedFolder_memoire-pot-growth/data/lake/omnibus/january/january.Sav",
                                 variable = "C4_A1")
 table(rel_raw)
@@ -219,7 +217,7 @@ rel_clean <- rel_raw / 10
 table(rel_clean)
 CleanData$religiosity[CleanData$source_id == "january"] <- rel_clean
 
-## pilote 1 ---------------------------------------------------------
+### pilote 1 ---------------------------------------------------------
 rel_raw <- as.vector(haven::read_sav("_SharedFolder_memoire-pot-growth/data/lake/datagotchi_pilot1_2022/ULA12-BASE-1500.sav")$Q90_A1)
 rel_raw <- rel_raw[respondents_to_keep_pilote1]
 table(rel_raw)
@@ -228,7 +226,7 @@ rel_clean <- rel_raw / 10
 table(rel_clean)
 CleanData$religiosity[CleanData$source_id == "pilote1"] <- rel_clean
 
-## pilote 2 ---------------------------------------------------------
+### pilote 2 ---------------------------------------------------------
 rel_raw_fr <- sondr::load_variable(file = "_SharedFolder_memoire-pot-growth/data/lake/datagotchi_pilot2_2022/datagotchi_pilot2_2022.csv",
                                    variable = "FR_importantOfRelig_1")[-c(1, 2)]
 rel_raw_fr[rel_raw_fr == ""] <- NA
@@ -500,6 +498,41 @@ hist(CleanData$iss_newleft_wokeArtists)
 CleanData$iss_newleft_wokeArtists <- finverser(CleanData$iss_newleft_wokeArtists)
 hist(CleanData$iss_newleft_wokeArtists)
 
+## Libertarisme ------------------------------------------------------------
+
+Jan <- haven::read_sav("_SharedFolder_memoire-pot-growth/data/lake/omnibus/january/january.Sav")
+attributes(Jan$QWOKE_A7)
+attributes(Jan$QWOKE_A8)
+attributes(Jan$QWOKE_A9)
+
+clean_qwoke <- function(raw){
+  clean <- NA
+  clean[raw == 1] <- 1
+  clean[raw == 2] <- 0.67
+  clean[raw == 3] <- 0.33
+  clean[raw == 4] <- 0
+  return(clean)
+}
+
+clean_qwokes <- function(source_id, CleanData){
+  Raw <- haven::read_sav(paste0("_SharedFolder_memoire-pot-growth/data/lake/omnibus/", source_id, "/", source_id, ".Sav"))
+  CleanData$iss_liberty_qcMissLiberty[CleanData$source_id == source_id] <- clean_qwoke(Raw$QWOKE_A7)
+  CleanData$iss_liberty_covidRevealAutoritharian[CleanData$source_id == source_id] <- clean_qwoke(Raw$QWOKE_A8)
+  CleanData$iss_liberty_mesuresSanitairesDictature[CleanData$source_id == source_id] <- clean_qwoke(Raw$QWOKE_A9)
+  return(CleanData)
+}
+
+# january QWOKE_A7, QWOKE_A8, QWOKE_A9
+CleanData <- clean_qwokes("january", CleanData)
+
+# march QWOKE_A7, QWOKE_A8, QWOKE_A9
+CleanData <- clean_qwokes("march", CleanData)
+
+# april QWOKE_A7, QWOKE_A8, QWOKE_A9
+CleanData <- clean_qwokes("april", CleanData)
+
+# may QWOKE_A7, QWOKE_A8, QWOKE_A9
+CleanData <- clean_qwokes("may", CleanData)
 
 ## 3e lien -----------------------------------------------------------------
 
@@ -515,7 +548,7 @@ cleanl1[l1 == 1] <- 1
 cleanl1[l1 == 2] <- 0.67
 cleanl1[l1 == 3] <- 0.33
 cleanl1[l1 == 4] <- 0
-CleanData$iss_3elien_accord <- ifelse(CleanData$source_id == "february", cleanl1, NA)
+CleanData$iss_lien3_accord <- ifelse(CleanData$source_id == "february", cleanl1, NA)
 
 table(CleanData$source_id) ### 1200 februarys, so we need to have 1200 per vector
 l2 <- haven::read_sav("_SharedFolder_memoire-pot-growth/data/lake/omnibus/february/february.Sav")$L2
@@ -526,7 +559,7 @@ cleanl2[l2 == 1] <- 1
 cleanl2[l2 == 2] <- 0.67
 cleanl2[l2 == 3] <- 0.33
 cleanl2[l2 == 4] <- 0
-CleanData$iss_3elien_accordDim <- ifelse(CleanData$source_id == "february", cleanl2, NA)
+CleanData$iss_lien3_accordDim <- ifelse(CleanData$source_id == "february", cleanl2, NA)
 
 
 ### omnibus april -----------------------------------------------------------
@@ -540,7 +573,7 @@ cleanl1[l1 == 1] <- 1
 cleanl1[l1 == 2] <- 0.67
 cleanl1[l1 == 3] <- 0.33
 cleanl1[l1 == 4] <- 0
-CleanData$iss_3elien_accord <- ifelse(CleanData$source_id == "april", cleanl1, CleanData$iss_3elien_accord)
+CleanData$iss_lien3_accord <- ifelse(CleanData$source_id == "april", cleanl1, CleanData$iss_lien3_accord)
 
 table(CleanData$source_id) ### 1300 april, so we need to have 1300 per vector
 l2 <- haven::read_sav("_SharedFolder_memoire-pot-growth/data/lake/omnibus/april/april.Sav")$L2
@@ -550,16 +583,16 @@ cleanl2 <- NA
 cleanl2[l2 == 1] <- 1 ## fait trop de place au transport coll
 cleanl2[l2 == 2] <- 0.5 ## fait juste assez de place au transport coll
 cleanl2[l2 == 3] <- 0 ## fait pas assez de place au transport coll
-CleanData$iss_3elien_tooMuchPublicTransport <- ifelse(CleanData$source_id == "april", cleanl2, NA)
+CleanData$iss_lien3_tooMuchPublicTransport <- ifelse(CleanData$source_id == "april", cleanl2, NA)
 
 
-table(CleanData$iss_3elien_accord)
-table(CleanData$iss_3elien_accordDim)
-table(CleanData$iss_3elien_tooMuchPublicTransport)
+table(CleanData$iss_lien3_accord)
+table(CleanData$iss_lien3_accordDim)
+table(CleanData$iss_lien3_tooMuchPublicTransport)
 
-table(CleanData$iss_3elien_accord, CleanData$source_id)
-table(CleanData$iss_3elien_accordDim, CleanData$source_id)
-table(CleanData$iss_3elien_tooMuchPublicTransport, CleanData$source_id)
+table(CleanData$iss_lien3_accord, CleanData$source_id)
+table(CleanData$iss_lien3_accordDim, CleanData$source_id)
+table(CleanData$iss_lien3_tooMuchPublicTransport, CleanData$source_id)
 
 
 ## Environnement --------------------------------------------------------
@@ -595,6 +628,81 @@ hist(Data$public_transport)
 CleanData$iss_enviro_envTransp <- Data$public_transport
 hist(CleanData$iss_enviro_envTransp)
 
+# Political trust, cynism -------------------------------------------------
+
+# january C11
+Jan <- haven::read_sav("_SharedFolder_memoire-pot-growth/data/lake/omnibus/january/january.Sav")
+attributes(Jan$C11)
+raw <- Jan$C11
+table(raw)
+clean <- NA
+clean[raw == 1] <- 1
+clean[raw == 2] <- 0.75
+clean[raw == 3] <- 0.5
+clean[raw == 4] <- 0.25
+clean[raw == 5] <- 0
+CleanData$poltrust_govDoJust[CleanData$source_id == "january"] <- clean 
+table(clean)
+rm(Jan)
+
+# february
+Feb <- haven::read_sav("_SharedFolder_memoire-pot-growth/data/lake/omnibus/february/february.Sav")
+
+## N4_A2
+attributes(Feb$N4_A2)
+raw <- Feb$N4_A2
+table(raw)
+clean <- NA
+clean[raw == 1] <- 1
+clean[raw == 2] <- 0.67
+clean[raw == 3] <- 0.33
+clean[raw == 4] <- 0
+CleanData$poltrust_politiciensBienveillants[CleanData$source_id == "february"] <- clean 
+table(clean)
+
+## N4_A3
+attributes(Feb$N4_A3)
+raw <- Feb$N4_A3
+table(raw)
+clean <- NA
+clean[raw == 1] <- 0
+clean[raw == 2] <- 0.33
+clean[raw == 3] <- 0.67
+clean[raw == 4] <- 1
+CleanData$poltrust_politicensPreocup[CleanData$source_id == "february"] <- clean 
+table(clean)
+
+## N15
+attributes(Feb$N15)
+raw <- Feb$N15
+table(raw)
+clean <- NA
+clean[raw == 1] <- 0
+clean[raw == 2] <- 0.25
+clean[raw == 3] <- 0.5
+clean[raw == 4] <- 0.75
+clean[raw == 5] <- 1
+CleanData$poltrust_trustPartisPol[CleanData$source_id == "february"] <- clean 
+table(clean)
+
+rm(Feb)
+
+# Open question: MI issue -------------------------------------------------
+
+# february C7
+# march C6
+# april C6
+# may C6
+# datagotchi pilot 1 Q83O (in sav)
+# datagotchi pilot 2 FR_openFutur, EN_openPersonally
+
+#### LOAD data from gpt here
+MI_issues <- read.csv("_SharedFolder_memoire-pot-growth/data/warehouse/most_important_issues.csv",
+                      sep = ",")
+names(MI_issues)[-1] <- paste0("mi_issue_", names(MI_issues)[-1]) 
+
+#### Join with CleanData
+CleanData <- left_join(CleanData, MI_issues, by = "id")
 
 # Political knowledge ------------------------------------------------
 
@@ -644,69 +752,193 @@ table(clean)
 
 CleanData$political_knowledge[CleanData$source_id == "pilote2"] <- clean
 
-# Media and social media --------------------------------------------------
+table(CleanData$political_knowledge)
 
-## MEDIA ATTENTION ####
+# Reception of message --------------------------------------------------
 
-## Which media ####
+## Which traditional media? -------------------------------------------------
+
+media_list <- c("RDI" = "rdi", "TVA Nouvelles" = "tva",
+                "Le Devoir" = "ledevoir", "La Presse" = "lapresse",
+                "Radio-Canada (SRC)" = "radiocan", "LCN" = "lcn",
+                "CTV" = "ctv", "CBC" = "cbc", "The Gazette" = "thegazette", 
+                "Journal de Québec" = "journaldequebec", 
+                "Journal de Montréal" = "journalmontreal", "Le Soleil" = "lesoleil", 
+                "98.5 FM" = "fm985", "National Post" = "nationalpost", 
+                "Globe and Mail" = "globemail", "Global News" = "globalnews", 
+                "CNN" = "cnn", "Fox News" = "foxnews", "Guardian" = "guardian")
+
+# Initialiser les colonnes dans CleanData
+for (col_name in media_list) {
+  CleanData[[paste0("reception_polinfo_", col_name)]] <- NA
+}
+
+### February ----------------------------------------------------------------
+
+open <- readxl::read_excel("_SharedFolder_memoire-pot-growth/data/lake/omnibus/february/february_open_clean.xlsx") %>% 
+  select(QUEST = `{ID de fiche}`, O_C14_clean) %>% 
+  mutate(O_C14_clean = trimws(O_C14_clean))
+
+mediafeb <- haven::read_sav("_SharedFolder_memoire-pot-growth/data/lake/omnibus/february/february.Sav") %>% 
+  select(QUEST) %>% 
+  mutate(QUEST = as.character(QUEST)) %>% 
+  left_join(., open, by = "QUEST")
+  
+for (media_name in names(media_list)) {
+  media_abb <- media_list[media_name]
+  column_name <- paste0("reception_polinfo_", media_abb)
+  CleanData[CleanData$source_id == "february", column_name] <- as.integer(grepl(media_name, mediafeb$O_C14_clean, fixed = TRUE))
+}
 
 
-## MEDIA SOCIAUX ####
+### March ----------------------------------------------------------------
 
-### checker february et march + les autres omnibus et pilote.
-### conceptualisation nécessaire
-###
+open <- readxl::read_excel("_SharedFolder_memoire-pot-growth/data/lake/omnibus/march/march_open_clean.xlsx") %>% 
+  select(QUEST = `{ID de fiche}`, O_C11_clean) %>% 
+  mutate(O_C11_clean = trimws(O_C11_clean))
 
-# Political trust, cynism -------------------------------------------------
+mediamarch <- haven::read_sav("_SharedFolder_memoire-pot-growth/data/lake/omnibus/march/march.Sav") %>% 
+  select(QUEST) %>% 
+  mutate(QUEST = as.character(QUEST)) %>% 
+  left_join(., open, by = "QUEST")
 
+for (media_name in names(media_list)) {
+  media_abb <- media_list[media_name]
+  column_name <- paste0("reception_polinfo_", media_abb)
+  CleanData[CleanData$source_id == "march", column_name] <- as.integer(grepl(media_name, mediamarch$O_C11_clean, fixed = TRUE))
+}
 
+### April ----------------------------------------------------------------
 
-# Imput missing data with mice --------------------------------------------
+#open <- readxl::read_excel("_SharedFolder_memoire-pot-growth/data/lake/omnibus/april/april_open.xlsx") %>% 
+#  select(QUEST = `{ID de fiche}`, O_C11_clean) %>% 
+#  mutate(O_C11_clean = trimws(O_C11_clean))
 
+#mediamarch <- haven::read_sav("_SharedFolder_memoire-pot-growth/data/lake/omnibus/march/march.Sav") %>% 
+#  select(QUEST) %>% 
+#  mutate(QUEST = as.character(QUEST)) %>% 
+#  left_join(., open, by = "QUEST")
+#
+#for (media_name in names(media_list)) {
+#  media_abb <- media_list[media_name]
+#  column_name <- paste0("polinfo_", media_abb)
+#  CleanData[CleanData$source_id == "march", column_name] <- as.integer(grepl(media_name, mediamarch$O_C11_clean, fixed = TRUE))
+#}
 
+### May ---------------------------------------------------------------------
 
-# Make scales (REDO) -------------------------------------------------------------
+open <- readxl::read_excel("_SharedFolder_memoire-pot-growth/data/lake/omnibus/may/may_open_clean.xlsx") %>% 
+  select(QUEST, O_C11_clean) %>% 
+  mutate(O_C11_clean = trimws(O_C11_clean))
 
-CleanData$scale_nationaSouv <-   (CleanData$iss_nationalisme_qcRightDirection+
-                                    CleanData$iss_nationalisme_souv+
-                                    CleanData$iss_nationalisme_qcBefCan)/3
-hist(CleanData$scale_nationaSouv)
+mediamay <- haven::read_sav("_SharedFolder_memoire-pot-growth/data/lake/omnibus/may/may.Sav") %>% 
+  select(QUEST) %>% 
+  mutate(QUEST = as.character(QUEST)) %>% 
+  left_join(., open, by = "QUEST")
 
+for (media_name in names(media_list)) {
+  media_abb <- media_list[media_name]
+  column_name <- paste0("reception_polinfo_", media_abb)
+  CleanData[CleanData$source_id == "may", column_name] <- as.integer(grepl(media_name, mediamay$O_C11_clean, fixed = TRUE))
+}
 
-CleanData$scale_langFr <- (CleanData$drop_frenchDanger +
-                             CleanData$drop_worriedFrMtl +
-                             CleanData$drop_worriedFrProv +
-                             CleanData$drop_englishCegep +
-                             CleanData$drop_businessFrench +
-                             CleanData$drop_afraidDisappear)/6
-hist(CleanData$scale_langFr)
+#mediadata <- CleanData %>% 
+#  select(starts_with("reception_polinfo_")) %>% 
+#  drop_na()
+#
+#saveRDS(mediadata, "_SharedFolder_memoire-pot-growth/data/warehouse/media_analysis/mediadata.rds")
 
+## Which social media ------------------------------------------------------------
 
-CleanData$scale_laicite <-   (CleanData$iss_laic_relSignsTeachersNo +
-                              CleanData$iss_laic_relSignsWorkNo +
-                              CleanData$iss_laic_religionImportant +
-                              CleanData$iss_laic_secularismEncouraged)/4
-hist(CleanData$scale_laicite)
+code_to_social <- c(`1` = "facebook", `2` = "twitter", `3` = "instagram", 
+                    `4` = "linkedin", `5` = "tiktok", `6` = "youtube")
 
-CleanData$scale_immigration <-   finverser((CleanData$iss_immig_immAdapt+
-                                            CleanData$iss_immig_immBenefit+
-                                            CleanData$iss_immig_immLearnFr+
-                                            CleanData$iss_immig_immLess+
-                                            CleanData$iss_immig_immThreat)/5)
-hist(CleanData$scale_immigration)
+# Initialiser les colonnes dans CleanData
+for (col_name in code_to_social) {
+  CleanData[[paste0("reception_socialmedia_", col_name)]] <- NA
+}
 
-CleanData$scale_woke <-   (CleanData$iss_newleft_wokeWhiteRac +
-                           CleanData$iss_newleft_wokenoWhites+
-                           CleanData$iss_newleft_wokeCensor+
-                           CleanData$iss_newleft_wokeSocCtrl+
-                           CleanData$iss_newleft_wokeRich+
-                           CleanData$iss_newleft_wokeSysRaci+
-                           CleanData$iss_newleft_wokeWhiteMenFav+
-                           CleanData$iss_newleft_wokeArtists)/8
-hist(CleanData$scale_woke)
+### February ----------------------------------------------------------------
 
-CleanData$scale_3elien <- (CleanData$iss_3elien_Accord+CleanData$iss_3elien_Dim)/2
-hist(CleanData$scale_3elien)
+feb <- haven::read_sav("_SharedFolder_memoire-pot-growth/data/lake/omnibus/february/february.Sav") %>% 
+  ## need to be in first three choices
+  select(all_of(paste0("N1_M", 1:3)))
 
-CleanData$scale_enviro <- (CleanData$drop_envGvtMore+CleanData$drop_envMeat+
-                             CleanData$drop_envLifestyle+CleanData$drop_envTransp)/4
+feb_transformed <- feb
+for (col in names(feb_transformed)) {
+  feb_transformed[[col]] <- as.character(code_to_social[feb[[col]]])
+}
+
+feb_transformed$all_media <- apply(feb_transformed, 1, function(x) paste(na.omit(x), collapse = ", "))
+
+# Créer des colonnes binaires pour chaque réseau social
+for (media in code_to_social) {
+  column_name <- paste0("reception_socialmedia_", media)
+  CleanData[CleanData$source_id == "february", column_name] <- as.integer(grepl(media, feb_transformed$all_media, fixed = TRUE))
+}
+
+table(CleanData$reception_socialmedia_tiktok, CleanData$age)
+
+### Pilote 1 ----------------------------------------------------------------
+
+code_to_social <- c(`1` = "facebook", `2` = "twitter", `3` = "instagram", 
+                    `7` = "linkedin", `5` = "tiktok", `8` = "youtube")
+
+pilote1raw <- haven::read_sav("_SharedFolder_memoire-pot-growth/data/lake/datagotchi_pilot1_2022/ULA12-BASE-1500.sav") %>% 
+  slice(respondents_to_keep_pilote1) %>% 
+  select(Q34) %>% 
+  mutate(Q34 = code_to_social[Q34]) %>% 
+  fastDummies::dummy_columns(., select_columns = "Q34") %>% 
+  select(-Q34, -Q34_NA) %>% 
+  replace_na(list("Q34_facebook" = 0,
+                  "Q34_twitter" = 0,
+                  "Q34_instagram" = 0,
+                  "Q34_linkedin" = 0,
+                  "Q34_tiktok" = 0,
+                  "Q34_youtube" = 0))
+
+names(pilote1raw) <- gsub("Q34_", "reception_socialmedia_", names(pilote1raw))
+
+for (col_name in names(pilote1raw)) {
+  CleanData[CleanData$source_id == "pilote1", col_name] <- pilote1raw[[col_name]]
+}
+
+table(CleanData$source_id, CleanData$reception_socialmedia_facebook)
+
+## Best way to reach you ---------------------------------------------------
+
+reachfeb <- sondr::load_variable("_SharedFolder_memoire-pot-growth/data/lake/omnibus/february/february.Sav",
+                                 variable_name = "N12")
+
+CleanData$reception_howreach <- NA
+CleanData$reception_howreach[CleanData$source_id == "february" & reachfeb %in% c(1, 2, 3)] <- "direct" # poste, telephone et porte-à-porte
+CleanData$reception_howreach[CleanData$source_id == "february" & reachfeb == 4] <- "tv"
+CleanData$reception_howreach[CleanData$source_id == "february" & reachfeb == 5] <- "email"
+CleanData$reception_howreach[CleanData$source_id == "february" & reachfeb == 6] <- "socialmedia"
+CleanData$reception_howreach[CleanData$source_id == "february" & reachfeb %in% c(7, 8)] <- "journal_radio"
+table(CleanData$reception_howreach)
+
+CleanData$reception_howreach <- factor(CleanData$reception_howreach)
+
+table(CleanData$reception_howreach)
+
+# Transform chr --> factor ------------------------------------------------
+
+CleanData <- CleanData %>% select(-riding_name)
+CleanData <- CleanData %>% select(-region)
+CleanData$riding_id <- factor(CleanData$riding_id)
+
+CleanData$age_cat <- factor(CleanData$age_cat,
+                            levels = c("15m29", "age30m44",
+                                       "age45m59", "age60m74",
+                                       "age75p"))
+CleanData$educ <- factor(CleanData$educ,
+                         levels = c("educHSB", "educColl", "educUniv"))
+CleanData$income <- factor(CleanData$income,
+                         levels = c("incomeLow", "incomeMid", "incomeHigh"))
+CleanData$lang <- factor(CleanData$lang)
+CleanData$religion <- factor(CleanData$religion)
+
+# Save it -----------------------------------------------------------------
+
+saveRDS(CleanData, "_SharedFolder_memoire-pot-growth/data/warehouse/survey_data/survey_data_holes.rds")
