@@ -75,8 +75,8 @@ doParallel::stopImplicitCluster()
 
 #parallel::stopCluster(cl)
 
-#saveRDS(Output, "_SharedFolder_memoire-pot-growth/data/warehouse/survey_data/after_imputation.rds")
-Output <- readRDS("_SharedFolder_memoire-pot-growth/data/warehouse/survey_data/after_imputation.rds")
+#saveRDS(Output, "_SharedFolder_memoire-pot-growth/data/warehouse/survey_data/after_imputation0.rds")
+Output <- readRDS("_SharedFolder_memoire-pot-growth/data/warehouse/survey_data/after_imputation0.rds")
 
 #### bind Id_data on Output
 
@@ -85,4 +85,4 @@ Data <- cbind(
   Output
 )
 
-saveRDS(Data, "_SharedFolder_memoire-pot-growth/data/warehouse/survey_data/final.rds")
+saveRDS(Data, "_SharedFolder_memoire-pot-growth/data/warehouse/survey_data/after_imputation1.rds")

@@ -1,48 +1,69 @@
-# using afe, find good number of scales.
-# then, use factor loadings on scales to create each axis
+# Packages ----------------------------------------------------------------
+library(dplyr)
 
-# Make scales (REDO) -------------------------------------------------------------
+# Data --------------------------------------------------------------------
+Data <- readRDS("_SharedFolder_memoire-pot-growth/data/warehouse/survey_data/after_imputation1.rds") %>% 
+  ## fix region variable as factor
+  mutate(granular = factor(granular))
 
-CleanData$scale_nationaSouv <-   (CleanData$iss_nationalisme_qcRightDirection+
-                                    CleanData$iss_nationalisme_souv+
-                                    CleanData$iss_nationalisme_qcBefCan)/3
-hist(CleanData$scale_nationaSouv)
+FaData <- Data %>% 
+  select(starts_with("iss"), -iss_enviro_envMeat, -iss_enviro_envTransp)
 
+# Attitude scales ---------------------------------------------------------
 
-CleanData$scale_langFr <- (CleanData$drop_frenchDanger +
-                             CleanData$drop_worriedFrMtl +
-                             CleanData$drop_worriedFrProv +
-                             CleanData$drop_englishCegep +
-                             CleanData$drop_businessFrench +
-                             CleanData$drop_afraidDisappear)/6
-hist(CleanData$scale_langFr)
+## Exploratory afe ---------------------------------------------------------
 
+fa <- factanal(FaData, 6, rotation = "promax")
+fa$loadings
 
-CleanData$scale_laicite <-   (CleanData$iss_laic_relSignsTeachersNo +
-                                CleanData$iss_laic_relSignsWorkNo +
-                                CleanData$iss_laic_religionImportant +
-                                CleanData$iss_laic_secularismEncouraged)/4
-hist(CleanData$scale_laicite)
+saveRDS(fa, "_SharedFolder_memoire-pot-growth/data/warehouse/scales/factanal.rds")
 
-CleanData$scale_immigration <-   finverser((CleanData$iss_immig_immAdapt+
-                                              CleanData$iss_immig_immBenefit+
-                                              CleanData$iss_immig_immLearnFr+
-                                              CleanData$iss_immig_immLess+
-                                              CleanData$iss_immig_immThreat)/5)
-hist(CleanData$scale_immigration)
+## 6 scales
+### 1 Quebec sovereignty/Protection of french
+### 2 Libertarian/COVID
+### 3 New left
+### 4 Laicite
+### 5 Immigration
+### 6 3e lien
 
-CleanData$scale_woke <-   (CleanData$iss_newleft_wokeWhiteRac +
-                             CleanData$iss_newleft_wokenoWhites+
-                             CleanData$iss_newleft_wokeCensor+
-                             CleanData$iss_newleft_wokeSocCtrl+
-                             CleanData$iss_newleft_wokeRich+
-                             CleanData$iss_newleft_wokeSysRaci+
-                             CleanData$iss_newleft_wokeWhiteMenFav+
-                             CleanData$iss_newleft_wokeArtists)/8
-hist(CleanData$scale_woke)
+## Add scales to Data ------------------------------------------------------
 
-CleanData$scale_3elien <- (CleanData$iss_3elien_Accord+CleanData$iss_3elien_Dim)/2
-hist(CleanData$scale_3elien)
+Data$scale_souv_langfr <- potgrowth::compute_scale_scores(factanal_object = fa,
+                                                          survey_data = Data,
+                                                          scale_order = 1)
+hist(Data$scale_souv_langfr)
 
-CleanData$scale_enviro <- (CleanData$drop_envGvtMore+CleanData$drop_envMeat+
-                             CleanData$drop_envLifestyle+CleanData$drop_envTransp)/4
+Data$scale_libertarian <- potgrowth::compute_scale_scores(factanal_object = fa,
+                                                   survey_data = Data,
+                                                   scale_order = 2)
+hist(Data$scale_libertarian)
+
+Data$scale_woke <- potgrowth::compute_scale_scores(factanal_object = fa,
+                                                   survey_data = Data,
+                                                   scale_order = 3)
+hist(Data$scale_woke)
+
+Data$scale_laicite <- potgrowth::compute_scale_scores(factanal_object = fa,
+                                                      survey_data = Data,
+                                                      scale_order = 4)
+hist(Data$scale_laicite)
+
+Data$scale_immigration <- potgrowth::compute_scale_scores(factanal_object = fa,
+                                                      survey_data = Data,
+                                                      scale_order = 5)
+hist(Data$scale_immigration)
+
+Data$scale_lien3 <- potgrowth::compute_scale_scores(factanal_object = fa,
+                                                          survey_data = Data,
+                                                          scale_order = 6)
+hist(Data$scale_lien3)
+
+# Political trust ---------------------------------------------------------
+
+Data$political_trust <- (Data$poltrust_govDoJust + Data$poltrust_politicensPreocup +
+                           Data$poltrust_politiciensBienveillants + Data$poltrust_trustPartisPol) / 4
+hist(Data$political_trust)
+
+# Save it -----------------------------------------------------------------
+
+saveRDS(Data, "_SharedFolder_memoire-pot-growth/data/warehouse/survey_data/with_scales.rds")

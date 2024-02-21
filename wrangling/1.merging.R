@@ -416,9 +416,9 @@ hist(Data$teachers_not_allowed_wear_rel_symbol)
 CleanData$iss_laic_relSignsTeachersNo <- Data$teachers_not_allowed_wear_rel_symbol
 hist(CleanData$iss_laic_relSignsTeachersNo)
 
-hist(Data$religion_very_important)
-CleanData$iss_laic_religionImportant <- Data$religion_very_important
-hist(CleanData$iss_laic_religionImportant)
+#hist(Data$religion_very_important)
+#CleanData$iss_laic_religionImportant <- Data$religion_very_important
+#hist(CleanData$iss_laic_religionImportant)
 
 
 ## Immigration -------------------------------------------------------------
@@ -429,10 +429,10 @@ hist(CleanData$iss_laic_religionImportant)
 #### immigrants_threat_to_province_culture
 
 hist(Data$iss_immigBenefitQc)
-CleanData$iss_immig_immBenefit <- Data$iss_immigBenefitQc
-hist(CleanData$iss_immig_immBenefit)
-CleanData$iss_immig_immBenefit <- finverser(CleanData$iss_immig_immBenefit)
-hist(CleanData$iss_immig_immBenefit)
+CleanData$iss_immig_immNoBenefit <- Data$iss_immigBenefitQc
+hist(CleanData$iss_immig_immNoBenefit)
+CleanData$iss_immig_immNoBenefit <- finverser(CleanData$iss_immig_immNoBenefit)
+hist(CleanData$iss_immig_immNoBenefit)
 
 hist(Data$iss_immigShouldAdapt)
 CleanData$iss_immig_immAdapt <- Data$iss_immigShouldAdapt
