@@ -55,10 +55,10 @@ doParallel::stopImplicitCluster()
 #no_cores <- parallel::detectCores() - 1
 #cl <- parallel::makeCluster(no_cores)
 #doParallel::registerDoParallel(cl)
-
-# Use missForest to imput missing data ------------------------------------------
-
-## number of iterations to do. So if iterations = 10, the dataset will be multiplied by 10.
+#
+## Use missForest to imput missing data ------------------------------------------
+#
+### number of iterations to do. So if iterations = 10, the dataset will be multiplied by 10.
 #iterations <- 5
 #for (i in 1:iterations){
 #  message(paste0("-------- ITERATION #", i , " STARTING ------------"))
@@ -72,9 +72,7 @@ doParallel::stopImplicitCluster()
 #  }
 #  message(paste0("-------- ITERATION #", i , " IS DONE ------------"))
 #}
-
 #parallel::stopCluster(cl)
-
 #saveRDS(Output, "_SharedFolder_memoire-pot-growth/data/warehouse/survey_data/after_imputation0.rds")
 Output <- readRDS("_SharedFolder_memoire-pot-growth/data/warehouse/survey_data/after_imputation0.rds")
 

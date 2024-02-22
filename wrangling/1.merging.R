@@ -80,6 +80,7 @@ Check <- Data %>%
 CleanData$age <- Data$ses_age_final
 CleanData$age[CleanData$age==15] <- 18
 CleanData$age_cat <- Data$ageC
+table(CleanData$age_cat)
 
 ## Educ --------------------------------------------------------------------
 CleanData$educ <- Data$educ
@@ -929,7 +930,7 @@ CleanData <- CleanData %>% select(-region)
 CleanData$riding_id <- factor(CleanData$riding_id)
 
 CleanData$age_cat <- factor(CleanData$age_cat,
-                            levels = c("15m29", "age30m44",
+                            levels = c("age15m29", "age30m44",
                                        "age45m59", "age60m74",
                                        "age75p"))
 CleanData$educ <- factor(CleanData$educ,
