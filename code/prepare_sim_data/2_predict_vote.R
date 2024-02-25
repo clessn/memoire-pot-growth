@@ -45,8 +45,9 @@ for (i in 1:length(parties)){
   potential_for_growth_values <- ifelse(potential_for_growth_values > 0, 0, potential_for_growth_values)
   datai$potential_for_growth <- potential_for_growth_values
   vote_solidity_values <- predict(object = vote_solidity_model, newdata = newdatai)
-  vote_solidity_values <- ifelse(vote_solidity_values < 0, 0, vote_solidity_values)
-  vote_solidity_values <- ifelse(vote_solidity_values > 1, 1, vote_solidity_values)
+  #vote_solidity_values <- vote_solidity_values + abs(min(vote_solidity_values)) ### artificially put minimum value at 0
+  #vote_solidity_values <- ifelse(vote_solidity_values < 0, 0, vote_solidity_values)
+  #vote_solidity_values <- ifelse(vote_solidity_values > 1, 1, vote_solidity_values)
   datai$vote_solidity <- vote_solidity_values
   if (i == 1){
     output_df <- datai
@@ -57,6 +58,7 @@ for (i in 1:length(parties)){
 }
 
 output_df <- output_df %>% 
+  mutate(vote_solidity = vote_solidity + abs(min(vote_solidity))) %>%  ### artificially put minimum value at 0
   arrange(profil_id)
 
 saveRDS(output_df, "_SharedFolder_memoire-pot-growth/data/marts/sim_data/2_with_vote_variables.rds")
