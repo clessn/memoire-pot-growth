@@ -38,4 +38,4 @@ howreach_model <- potgrowth::iv_model(
   ses = ses,
   model_type = "multinom")
 saveRDS(howreach_model,
-        "_SharedFolder_memoire-pot-growth/data/marts/models/reception_models/howreach_model.rds")
+        "_SharedFolder_memoire-pot-growth/data/marts/models/reception_models/reception_howreach.rds")
