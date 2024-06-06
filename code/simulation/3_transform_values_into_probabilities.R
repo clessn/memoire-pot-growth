@@ -14,6 +14,8 @@ output <- data %>%
 # Vote solidity ----------------------------------------------------
 
 ### for now, simply calculate it like this.
-output$prob_switch_no_vote <- 1 - output$vote_solidity
+output$prob_switch_no_vote <- ifelse((1 - output$vote_solidity) < 0, 0, (1 - output$vote_solidity))
+hist(output$prob_switch_no_vote)
+min(output$prob_switch_no_vote)
 
 saveRDS(output, "_SharedFolder_memoire-pot-growth/data/marts/sim_data/3_with_probs_switch.rds")

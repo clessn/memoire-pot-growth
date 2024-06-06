@@ -1,0 +1,629 @@
+---
+title: "<span style='font-size: 49pt;'>Opérationnaliser le <span style='color: #FFDCA2; font-size:60pt;'>potentiel de croissance</span> des partis politiques dans un système multipartite</span>"
+author: "Hubert Cadieux (première session de maîtrise)<br><br>Sous la co-direction de<br>Catherine Ouellet et Yannick Dufresne"
+format:
+  theme: dark
+  fontsize: 31pt
+  pdf:
+    fontsize: 31pt
+title-slide-attributes: 
+  data-notes: "Bonjour, je suis Hubert Cadieux. Ajd présente le début de mon projet de mémoire portant sur le potentiel de croissance des partis politiques en étudiant le cas du Québec. Un sujet qui doit être bien théorisé et conceptualisé avant de pouvoir l'opérationnaliser et l'étudier dans un contexte un peu plus systématique, pour pouvoir interpréter et faire des recommandations stratégiques basé sur données observationnelles.<br>
+  Concept qui est un peu utilisé dnas des articles médiatiques par exemple sans vraiment avoir été théorisé et validé."
+editor: source
+---
+
+# Mise en contexte
+
+- Les partis ont des contraintes
+  - Institutionnelles, idéologiques, image de marque, etc.
+  - Limitent et cadrent les actions possibles que le parti peut prendre &rarr; [***marge de manoeuvre***]{style="color: #FFDCA2;"}
+
+::: {.notes}
+Institutionnelles: lois électorales, financement des partis<br>
+Idéologiques: exemple du PQ<br>
+Ces contraintes limites et cadrent les actions possibles<br>
+C'est la marge de manoeuvre des partis
+:::
+
+# Mise en contexte
+Répertoire d'actions à l'intérieur de cette [***marge de manoeuvre***]{style="color: #FFDCA2;"}:<br>
+
+- Communication politique
+- Positionnement sur des enjeux
+
+:::{.notes}
+image de marque, cibler segments, mettre certains messages de l'avant, réseaux sociaux
+:::
+
+# Définition
+[***Potentiel de croissance***]{style="color: #FFDCA2;"}: performance électorale si les stratégies disponibles dans sa marge de manœuvre sont optimisées
+
+
+# Objectif du mémoire
+
+- Opérationnaliser le potentiel de croissance des partis dans un système multipartite
+- Optimiser les stratégies politiques (communication politique, positionnement sur des enjeux)
+
+::: {.notes}
+OPérationnaliser: quantifier à partir de données obs<br>
+Optimisation: ou du moins améliorer l'information qui se rend aux stratèges pour optimiser stratégies, systématiser
+:::
+
+# Cadre théorique 
+
+::: {.nonincremental}
+- Ancrage dans les théories classiques du choix de vote
+  - [Columbia]{style="font-size: 40pt; color: #FFDCA2;"} variables socio-démographiques (Lazarsfeld et al. 1948, Berenson et al. 1954)
+  - [Michigan]{style="font-size: 40pt; color: #FFDCA2;"} + identification partisane, modèle plus flexible (Campbell et al. 1960, Lewis-Beck et al. 2008)
+    - Distinction entre facteurs à long-terme et facteurs à court-terme
+:::
+
+::: {.notes}
+Columbia: vote prédictible par variables socio-démographiques<br>
+Michigan<br>
+Ajout de flexibilité avec id partisane et autres vars psycho<br>
+Id partisane influencée fortement par variables socio, puis gros effet sur le vote<br>
+Facteurs long terme court terme
+:::
+
+## Cadre théorique: entonnoir de la causalité
+
+![](graphs/entonnoir_causalite.png){width=100% fig-align="center"}
+
+:::{.notes}
+cadre théo s'inscrit dans le modèle causalité<br>
+modèle qui veut que chaque bloc de facteurs ait un effet différent dans le temps<br>
+plus long-terme, plus la variable est fixe<br>
+:::
+
+## Cadre théorique: entonnoir de la causalité
+
+![](graphs/entonnoir_causalite_marge_manoeuvre.png){width=100% fig-align="center"}
+
+:::{.notes}
+On va situer la marge de manoeuvre dans les blocs à court-terme, donc enjeux et candidats
+:::
+
+
+## Entonnoir de causalité, adaptation contexte québécois
+
+::: {.nonincremental}
+- Modèle développé dans contexte bipartite américain, 20e siècle
+- Identification partisane moins forte au Canada (Jenson 1975)
+- Influence considérable des facteurs court-terme sur électeurs canadiens (Blais 2004, Kilibarda et al. 2020)
+- Hétérogénéité de la saillance, micro-publics (Krosnick 1990), système médiatique hybride
+- Donc.. marge de manoeuvre considérable
+:::
+
+:::{.notes}
+évidemment il faut adapter<br>
+hérogénéité: fragmentation de la saillance des enjeux et des canaux de réception, surtout dans le contexte des réseaux sociaux, à prendre considération dans le bloc des enjeux/candidats<br>
+postulat marge manoeuvre > que ce que théories classiques laissent entendre
+:::
+
+## Théorisation du potentiel de croissance: deux concepts distincts
+
+1. Potentiel de croissance [statique]{style="font-size: 50pt; color: #B3E5FC;"}: en conservant ses positions actuelles sur un enjeu.<br>[Atteint via stratégies de communication politique.]{style="font-size: 20pt;"}
+  
+2. Potentiel de croissance [dynamique]{style="font-size: 50pt; color: #FF9800;"}: en adoptant l'ensemble de positions optimal sur les enjeux.<br>[Assume que le potentiel de croissance statique est atteint.]{style="font-size: 20pt;"}
+
+:::{.notes}
+Comm pol: stratégie sur réseaux sociaux, mieux cibler différents segments, mettre de l'avant certains messages, etc.<br>
+:::
+
+
+## Application des deux concepts
+
+<br>
+
+::: {.nonincremental}
+1. Potentiel de croissance [statique]{style="font-size: 50pt; color: #B3E5FC;"}: la récente montée du PQ
+
+2. Potentiel de croissance [dynamique]{style="font-size: 50pt; color: #FF9800;"}: exploration empirique
+:::
+
+- Données: 8 sondages mensuels de janvier à août 2022 (n = 9135)
+
+## Mesurer le potentiel de croissance avec l'IRC
+
+Indice Relatif de Confiance (IRC)
+
+:::{.nonincremental}
+- Développé dans le contexte québécois (Dufresne et al. 2022, Déry et al. 2022)
+- Comble les déficits des mesures traditionnelles d'intention de vote
+  - Indice continu de l'intention de vote
+  - Information sur les 5 partis pour chaque répondant
+:::
+
+## Mesurer le potentiel de croissance avec l'IRC
+
+Sur une échelle de 0 à 10, quelle est la probabilité que vous votiez pour [parti]?
+
+![](graphs/2_rci_1.png){width=100% fig-align="center"}
+
+## Mesurer le potentiel de croissance avec l'IRC
+
+Sur une échelle de 0 à 10, quelle est la probabilité que vous votiez pour [parti]?
+
+![](graphs/2_rci_2.png){width=100% fig-align="center"}
+
+## Avantages théoriques de l'IRC
+
+:::{.nonincremental}
+- Plus adapté aux systèmes multipartites
+<!--- - Ajout d'une couche de choix &rarr; réduction de l'erreur de prédiction --->
+- Atténue l'incertitude associée aux écarts entre attitudes (intention de vote) et comportement (action de voter)
+- Fait la distinction entre les électeurs inatteignables et atteignables &rarr; [***potentiel de croissance***]{style="font-size: 40pt; color: #FFDCA2;"}
+<!--- - Fait la distinction entre un électeur solide et un électeur fragile &rarr; [***solidité du vote***]{style="font-size: 40pt; color: #FFDCA2;"} --->
+:::
+
+# Application du potentiel de croissance [statique]{style="color: #B3E5FC;"}
+[La récente montée du PQ]{style="font-size: 40pt;"}
+
+## Potentiel de croissance [statique]{style="color: #B3E5FC;"}: la montée du PQ
+
+![](graphs/2_projections_QC125_fr.png){width=70% fig-align="center"}
+
+:::{.notes}
+La montée du PQ principalement due au déclin de la CAQ<br>
+Mais pourquoi PQ a profité et pas autre challenger?
+:::
+
+## Distribution de l'IRC négatif estimé à travers les 125 circonscriptions
+
+```{r, fig.align="center"}
+library(dplyr)
+library(ggplot2)
+# data loading ------------------------------------------------------------
+df <- readRDS("~/Dropbox/CLESSN/article_pot-growth/_SharedFolder_article_pot-growth/data/marts/rci_by_riding/provqc2022/aggregated/potgrowth_votesolidity.rds")
+# data wrangling ----------------------------------------------------------
+df_pg <- df %>% 
+  filter(model == "potgrowth", riding_id != "938") %>% 
+  mutate(weighted_mean_estimate == ifelse(weighted_mean_estimate > 0, 0, weighted_mean_estimate))
+df_pg$party <- factor(df_pg$party, levels = c("PCQ", "PQ", "QS", "PLQ", "CAQ"))
+df_vs <- df %>% 
+  filter(model == "vote_solidity", riding_id != "938")
+df_vs$party <- factor(df_vs$party, levels = c("PCQ", "PQ", "QS", "PLQ", "CAQ"))
+# graphs ------------------------------------------------------------------
+colors <- c("CAQ" = "#00cccc", "PLQ" = "#ED1A2D", "PQ" = "#004C9D", "QS" = "#FF5605", "PCQ" = "purple")
+ggplot(df_pg, aes(x = weighted_mean_estimate, y = party, fill = party, color = party)) +
+  ggridges::geom_density_ridges(alpha = 0.4, color = "white", quantile_lines = TRUE) +
+  scale_fill_manual(values = colors) +
+  scale_color_manual(values = colors) +
+  labs(title = "", x = "\nPotentiel de croissance estimé avec l'IRC\n", y = "",
+       caption = "Distribution par circonscription\nLes lignes de quantile représentent les 25e, 50e et 75e centiles de la distribution.") +
+  clessnverse::theme_clean_light() +
+  theme(legend.position = "none",
+        axis.title.x = element_text(hjust = 0.5, size = 20),
+        axis.text.x = element_text(size = 20),
+        axis.text.y = element_text(size = 20),
+        plot.caption = element_text(size = 12)) 
+```
+
+:::{.notes}
+ici on voit distribution des circonscriptions selon leur potentiel de croissance estimé pour chaque parti<br>
+estimation à partir de modèles linéaires projetés sur table de post-stratification<br>
+Modèles seulement faits sur non-électeurs des partis, IRC négatif<br>
+on peut voir que le PQ a le pot croiss + élevé chez les partis challengers<br>
+fait intéressant: CAQ a pot croiss le + élevé: est-ce que la CAQ aurait pus gagner encore +?<br>
+Vient appuyer que montée PQ vient + du déclin de la CAQ, qui était en bonne position<br>
+Mais donc, en assumant que la CAQ allait tomber, pk PQ?
+:::
+
+## [Potentiel de croissance des challengers dans les circonscriptions gagnées par la CAQ]{style="font-size: 35pt"}
+
+```{r, fig.align="center", fig.width=26,fig.height=12}
+# En francais pour mémoire ------------------------------------------------
+library(dplyr)
+library(ggplot2)
+
+# Data --------------------------------------------------------------------
+ResultsQc125 <- left_join(readRDS("~/Dropbox/CLESSN/article_pot-growth/_SharedFolder_article_pot-growth/data/warehouse/step2_electoral_swings/qc125_provqc2022.rds"), readRDS("~/Dropbox/CLESSN/article_pot-growth/_SharedFolder_article_pot-growth/data/warehouse/step2_electoral_swings/results_provqc2022.rds"),
+                          by = c("riding_id", "party")) %>%
+  tidyr::drop_na() %>% 
+  mutate(delta = proj_vote - prop_vote) %>% 
+  group_by(riding_id) %>% 
+  mutate(winner2022 = ifelse(prop_vote == max(prop_vote), 1, 0),
+         winnernow = ifelse(proj_vote == max(proj_vote), 1, 0))
+
+DataAgg <- readRDS("~/Dropbox/CLESSN/article_pot-growth/_SharedFolder_article_pot-growth/data/marts/rci_by_riding/provqc2022/aggregated/potgrowth_votesolidity.rds") %>%
+  select(riding_id, party, model, estimate = weighted_mean_estimate, stderr = weighted_stderr) %>%
+  left_join(., ResultsQc125, by = c("riding_id", "party")) %>% 
+  filter(riding_id != "938") %>% # removing Ungava too uncertain
+  tidyr::drop_na() %>% 
+  mutate(conf.low = estimate - stderr*1.96,
+         conf.high = estimate + stderr*1.96)
+
+CaqWon <- DataAgg %>% 
+  filter(party == "CAQ" & model == "vote_solidity" &
+           winner2022 == 1) %>% 
+  ungroup() %>% 
+  select(riding_id, votesolCAQ = estimate)
+
+# Graph ------------------------------------------------------------------
+
+colors <- c("CAQ" = "#00cccc", "PLQ" = "#ED1A2D", "PQ" = "#004C9D", "QS" = "#FF5605", "PCQ" = "purple")
+
+Data <- DataAgg %>% 
+  filter(riding_id %in% CaqWon$riding_id &
+           party != "CAQ" & model == "potgrowth") %>% 
+  select(riding_id, riding_name, party, potgrowth = estimate, prop_vote22 = prop_vote,
+         delta, winnernow) %>% 
+  mutate(prop_vote22 = prop_vote22 * 100,
+         potgrowth = potgrowth * 10) %>% 
+  tidyr::pivot_longer(., cols = c("potgrowth", "prop_vote22"),
+                      names_to = "method") %>% 
+  left_join(., CaqWon, by = "riding_id") %>% 
+  mutate(winnernow = ifelse(winnernow == 1, "Leading as of\nlatest projections", "Still behind"),
+         method = ifelse(method == "potgrowth", "Potential for Growth Estimate", "Vote share in 2022 (%)"))
+
+DiffFirst <- Data %>% 
+  #filter(method == "Potential for Growth Estimate") %>% 
+  group_by(riding_id, method) %>% 
+  mutate(rank = rank(-value, ties.method = "random")) %>% 
+  filter(rank %in% c(1, 2)) %>% 
+  tidyr::pivot_wider(., id_cols = c("riding_id", "riding_name", "method"),
+                     names_from = "rank",
+                     values_from = c("party", "value"))
+
+orders <- Data %>% 
+  filter(method == "Potential for Growth Estimate") %>%
+  group_by(riding_id) %>% 
+  filter(value == max(value)) %>% 
+  ungroup() %>% 
+  mutate(rank_xaxis = rank(-value)) %>% 
+  select(riding_id, rank_xaxis)
+
+means <- Data %>% 
+  #filter(method == "Potential for Growth Estimate") %>% 
+  group_by(party, method) %>% 
+  summarise(mean = mean(value))
+
+means_fr <- means %>% 
+  mutate( method = case_when(
+    method == "Potential for Growth Estimate" ~ "Estimé du potentiel\nde croissance (IRC)",
+    method == "Vote share in 2022 (%)" ~ "Part des votes\nen 2022 (%)"
+  ))
+
+Data %>% 
+  left_join(., DiffFirst, by = c("riding_id", "riding_name", "method")) %>% 
+  mutate(delta = delta*100,
+         delta_value = value_1 - value_2,
+         method = case_when(
+           method == "Potential for Growth Estimate" ~ "Estimé du potentiel\nde croissance (IRC)",
+           method == "Vote share in 2022 (%)" ~ "Part des votes\nen 2022 (%)"
+         )) %>% 
+  left_join(., orders, by = "riding_id") %>% 
+  ggplot(aes(x = reorder(riding_name, rank_xaxis),
+             y = value)) +
+  facet_wrap(~ method,
+             scales = "free_y",
+             strip.position = "left") +
+  #geom_hline(data = means_fr,
+  #           aes(yintercept = mean,
+  #               color = party),
+  #           show.legend = F, linetype = "dashed",
+  #           linewidth = 0.5, alpha = 0.4) +
+  geom_linerange(aes(ymin = value_2 + 0.001, ymax = value_1 - 0.001,
+                     color = party_1),
+                 alpha = 0.035, linewidth = 3.25) +
+  geom_point(aes(color = party),
+  alpha = 0.4,
+  shape = 19,
+  size = 7,
+  stroke = NA) +
+  guides(color = "none") +
+  scale_color_manual(values = colors) +
+  scale_size_continuous(range = c(1, 3.5),
+                        breaks = c(-10, 0, 10, 20, 30)) +
+  scale_x_discrete(expand = c(0.015, 0.015)) +
+  ylab("") +
+  xlab("\nCirconscriptions gagnées par la CAQ") +
+  clessnverse::theme_clean_light() +
+  labs(caption = "Les barres colorées représentent l'écart entre le premier et le deuxième parti dans la circonscription.") +
+  theme(axis.title.x = element_text(hjust = 0.5, size = 25),
+        axis.title.y = element_text(hjust = 0.5),
+        legend.title = element_text(size = 13),
+        legend.text = element_text(size = 11.5),
+        plot.caption = element_text(size = 16),
+        strip.placement = "outside",
+        strip.text.y = element_text(size = 25),
+        panel.grid.major.x = element_line(color = "grey85", linewidth = 0.15),
+        panel.grid.minor.x = element_blank(),
+        axis.text.x = element_blank(),
+        axis.text.y = element_text(size = 18))
+```
+
+:::{.notes}
+ce graph présente le pot croiss à gauche et la part des votes à l'élection 2022 des partis challengers dans les circonscriptions gagnées par la CAQ<br>
+si on prenait seulement la part des votes à droite, les 4 partis semblent en bonne position, surtout le PCQ<br>
+dans graph à gauche on voit que PQ était challenger avec + de potentiel croiss chez circonscriptions CAQ<br>
+:::
+
+# Potentiel de croissance [statique]{style="color: #B3E5FC;"}: la montée du PQ
+
+En agrégeant l'IRC à différents niveaux, on peut situer où se trouve le potentiel de croissance [statique]{style="color: #B3E5FC;"} des partis politiques
+
+:::{.notes}
+Pas parfait, mais on peut situer.<br>
+agrégé par circo, mais pourrait être avec dautres vars<br>
+Dans ce cas, le PQ a simplement surfé sur la vague du déclin de la CAQ. Mais clairement ils avaient un pot croiss chez des circonscriptions caquistes, ils auraient potentiellement pu les "convertir" en étant agressifs sur ces segments<br>
+J'en parlais à Sylvain ce midi, on le "sait". Mais c'est + intuition qu'une vraie information dérivée de résultats
+:::
+
+# Application du potentiel de croissance [dynamique]{style="color: #FF9800;"}
+[Explorations empiriques]{style="font-size: 40pt;"}
+
+:::{.notes}
+On va mtn se tourner vers pot croiss dynamique<br>
+donc atteint avec le positionnement optimal sur les enjeux<br>
+explorations empiriques sur 6 enjeux
+:::
+
+```{r}
+# Data --------------------------------------------------------------------
+
+labels_df <- readODS::read_ods("../_SharedFolder_memoire-pot-growth/data/warehouse/issue_labels")
+
+issues <- labels_df$variable
+to_reverse <- labels_df$reversed
+names(to_reverse) <- issues
+question_labels <- labels_df$question_label
+names(question_labels) <- issues
+labels0 <- labels_df$label0
+names(labels0) <- issues
+labels1 <- labels_df$label1
+names(labels1) <- issues
+
+data <- readRDS("../_SharedFolder_memoire-pot-growth/data/warehouse/survey_data/survey_data_holes.rds") %>% 
+  select(id, source_id, age_cat, income, male, educ, lang, religion,
+         all_of(issues), starts_with("irc_")) %>% 
+  tidyr::pivot_longer(.,
+                      cols = starts_with("irc"),
+                      names_to = "party",
+                      names_prefix = "irc_",
+                      values_to = "irc") %>% 
+  mutate(voter = ifelse(irc >= 0, 1, 0)) %>% 
+  tidyr::pivot_longer(.,
+                      cols = starts_with("iss_"),
+                      names_to = "issue",
+                      values_to = "position") %>% 
+  tidyr::drop_na() %>% 
+  mutate(position = ifelse(position == 0.66, 0.67, position),
+         position = ifelse(to_reverse[issue] == 1, 1 - position, position))
+
+
+## Party positions ---------------------------------------------------------
+
+df_party_positions <- potgrowth::aggregate_party_positions("../_SharedFolder_memoire-pot-growth/data/warehouse/party_positions/expert_surveys/",
+                                                           colnames = potgrowth::qc_parties) %>% 
+  mutate(position = ifelse(to_reverse[VARIABLE] == 1, 1 - position, position))
+
+# Function ----------------------------------------------------------------
+
+graph1 <- data %>%
+  group_by(issue, position, party, voter) %>% 
+  summarise(n = n(),
+            mean_irc = mean(irc)) %>% 
+  group_by(issue, position, party) %>% 
+  mutate(prop = n / sum(n))
+
+wide <- graph1 %>%
+  tidyr::pivot_wider(id_cols = c(issue, position, party),
+                     names_from = "voter",
+                     names_prefix = "voter",
+                     values_from = c("n", "prop", "mean_irc"))
+
+linewidth <- 4.5
+```
+
+```{r}
+graph <- function(issuei){
+  df_party_positionsi <- df_party_positions %>%
+    filter(VARIABLE == issuei)
+  party_positions_vec <- df_party_positionsi$position
+  names(party_positions_vec) <- df_party_positionsi$party
+  graphdata <- wide %>% 
+    filter(issue == issuei)
+  n <- pull(graphdata %>%
+    filter(party == "CAQ") %>% 
+    group_by(party) %>% 
+    mutate(n = n_voter0 + n_voter1) %>% 
+    summarise(n = sum(n)), n)
+  positions <- sort(unique(graphdata$position))
+  party_positions <-  positions[sapply(party_positions_vec, FUN = function(x){
+    which(abs(positions - x) == min(abs(positions - x)))[1]
+  })]
+  names(party_positions) <- names(party_positions_vec)
+  graphdata$party_position <- party_positions[graphdata$party]
+  graphdata$bold <- ifelse(graphdata$party_position == graphdata$position, 1, 0)
+  labels <- rep("", length(positions))
+  labels[1] <- labels0[issuei]
+  labels[length(labels)] <- labels1[issuei]
+  names(labels) <- positions
+  labels_wrapped <- stringr::str_wrap(labels, width = 20)
+  names(labels_wrapped) <- names(labels)
+  question_label <- question_labels[issuei]
+  question_label <- stringr::str_wrap(question_label, width = 60)
+  question_label <- paste0("\n", question_label)
+  ggplot(graphdata, aes(x = position, y = prop_voter0)) +
+    facet_wrap(~party, nrow = 1) +
+    geom_linerange(data = graphdata[graphdata$bold == 1,],
+                   aes(ymin = -prop_voter0 - 0.009, ymax = 0),
+                   color = "black", linewidth = linewidth + 1) +
+    geom_linerange(data = graphdata[graphdata$bold == 1,],
+                   aes(ymax = prop_voter1 + 0.009, ymin = 0),
+                   color = "black", linewidth = linewidth + 1) +
+    geom_linerange(data = graphdata[graphdata$bold == 1,],
+                   aes(ymax = prop_voter1, ymin = 0),
+                   color = "white", linewidth = linewidth) +
+    geom_linerange(aes(ymin = -prop_voter0, ymax = 0,
+                       color = mean_irc_voter0),
+                   linewidth = linewidth, alpha = 1) +
+    scale_color_gradientn(name = "IRC moyen: non-électeurs",
+                          colors = c("black",
+                                     "#DAA520",
+                                     "#50C878",
+                                     "#003366"),
+                          values = scales::rescale(c(quantile(wide$mean_irc_voter0, c(0.1, 0.25, 0.5, 0.75, 0.9)))),
+                          breaks = c(-0.5, -0.55, -0.6, -0.65, -0.7, -0.75, -0.8, -0.85)) +
+    ggnewscale::new_scale_color() +
+    geom_linerange(aes(ymin = 0, ymax = prop_voter1,
+                       color = party, alpha = mean_irc_voter1),
+                   linewidth = linewidth) +
+    scale_color_manual(values = potgrowth::qc_party_colors) +
+    guides(alpha = guide_legend(title.position = "top", order = 1),
+           color = "none") +
+    scale_alpha_continuous(name = "IRC moyen: électeurs", range = c(0.1, 1)) +
+    #geom_hline(yintercept = 0, color = "black", linewidth = 0.3) +
+    clessnverse::theme_clean_light() +
+    scale_x_continuous(labels = c(labels_wrapped[1], labels_wrapped[length(labels_wrapped)]),
+                       breaks = c(0.1, 0.9),
+                       expand = c(0.1, 0.1)) +
+    scale_y_continuous(limits = c(-1, 1),
+                       breaks = c(-1, -0.75, -0.5, -0.25, 0, 0.25, 0.5, 0.75, 1),
+                       labels = abs(c(-1, -0.75, -0.5, -0.25, 0, 0.25, 0.5, 0.75, 1))*100) +
+    ylab(expression("Non-électeurs" ~ phantom() %<-% phantom() ~ phantom() ~ phantom() ~ "Proportion (%)" ~ phantom() %->% phantom() ~ phantom() ~ phantom() ~ phantom() ~ "Électeurs")) +
+    xlab(question_label) +
+    labs(caption = paste0("\nLa barre encadrée de noir représente la position du parti.\nn = ", n, ", données de sondage 2022")) +
+    theme(legend.title = element_text(),
+          legend.position = "right",
+          axis.text.x = element_text(angle = 90, size = 6, hjust = 1, vjust = 0.5),
+          axis.title.y = element_text(hjust = 0.5, size = 10),
+          axis.title.x = element_text(hjust = 0.5, size = 10),
+          panel.background = element_rect(color = "grey90"),
+          strip.text.x = element_text(size = 7.5, vjust = 1))
+}
+```
+
+
+## [Exploration sur l'enjeu de la souveraineté du Québec]{style="font-size: 35pt"}
+
+![](graphs/iss_nationalisme_souv_no_irc.png){width=100% fig-align="center"}
+
+:::{.notes}
+Pour commencer ce graphique présente la distribution des intentions de vote à trvers les positions sur l'enjeu de la souv<br>
+Gauche féd, droite souv, milieu neutre<br>
+La barre de couleur du parti représente la proportion de votes acquis par ce parti chez les gens de cette position<br>
+Par exemple, QS<br>
+Chez les gens fortement souv: acquis presque 25% des votes (dans échantillon)<br>
+La barre grise représente donc le 75% qui vote pour un autre parti, redistribué dans les barres de couleur des autres partis<br>
+Positions des partis: 13 étudiants de la CLESSN qui ont codé les positions des partis. On prend la moyenne<br>
+<br>
+Ce graphique nous présente des informations intéressantes<br>
+Sans surprise, PQ PLQ<br>
+PCQ quand même intéressant<br>
+QS et CAQ se ressemblent<br>
+CAQ domine chez modérés/neutres<br>
+Le prochain graphique prend le même schéma, même structure mais en ajoutant un calque de couleur qui permet d'interpréter le pot croiss 
+:::
+
+## [Souveraineté du Québec]{style="font-size: 35pt"}
+
+```{r, fig.align='center', width = 25}
+graph("iss_nationalisme_souv") +
+  scale_x_continuous(labels = c("Fédéraliste", "Souverainiste"),
+                     breaks = c(0.2, 0.8), expand = c(0.1, 0.1)) +
+  theme(axis.text.x = element_text(size = 9))
+```
+
+:::{.notes}
+La barre de couleur du parti au desuss de 0 représente encore la proportion des votes acquis par le parti<br>
+Par contre, au lieu d'avoir simplement une barre grise, la barre représentant les électeurs des autres partis a le potentiel de croissance pour le parti en question. expliquer les couleurs<br>
+Exemple QS<br>
+Est-ce que QS devrait être "autant" souverainiste?<br>
+Donc ce graphique permet de voir si la position d'un parti sur l'enjeu est optimale<br>
+GARDER EN TÊTE: saillance. complètement descriptif, prend pas en compte, prochaines étapes pour combiner mesure théo du pot croiss (irc) et les enjeux<br>
+On va continuer avec ce même graphique mais sur d'autres enjeux pour vrm explorer les possibilités de croiser irc et enjeux
+:::
+
+
+## [Reconnaissance du racisme systémique]{style="font-size: 35pt"}
+
+```{r, fig.align='center', width = 25}
+graph("iss_newleft_wokeSysRaci") +
+  scale_x_continuous(labels = c("Désaccord", "D'accord"),
+                     breaks = c(0.2, 0.8), expand = c(0.1, 0.1)) +
+  theme(axis.text.x = element_text(size = 9),
+        axis.title.x = element_text(size = 15))
+```
+
+:::{.notes}
+Les partis semblent avoir des positions optimales<br>
+Quand mm intéressant de noter que le potentiel de croiss, pour chaque parti, semble se situer plus sur la reconnaissance modérée et ça ne semble pas être leurs positions<br>
+encore une fois saillance, pt que la position reste optimale considérant les autres enjeux
+:::
+
+
+## [Troisième lien]{style="font-size: 35pt"}
+
+```{r, fig.align='center', width = 25}
+graph("iss_lien3_accordDim") +
+  scale_x_continuous(labels = c("Désaccord", "D'accord"),
+                     breaks = c(0.2, 0.8), expand = c(0.1, 0.1)) +
+  theme(axis.text.x = element_text(size = 9),
+        axis.title.x = element_text(size = 15))
+```
+
+:::{.notes}
+Quand mm intéressant de noter le potentiel de croiss de PLQ PQ QS chez les en accord<br>
+:::
+
+## [Seuils d'immigration]{style="font-size: 35pt"}
+
+```{r, fig.align='center', width = 25}
+graph("iss_immig_immLess") +
+  scale_x_continuous(labels = c("Désaccord", "D'accord"),
+                     breaks = c(0.2, 0.8), expand = c(0.1, 0.1)) +
+  theme(axis.text.x = element_text(size = 9),
+        axis.title.x = element_text(size = 15))
+```
+
+:::{.notes}
+PQ et CAQ auraient peut-êre avantage à changer leurs seuils à la hausse? Évidemment pas une recommandation qu'on peut faire à ce stade, c'est exploratoire pour l'instant.
+:::
+
+## [Port de signes religieux chez les enseignant.e.s]{style="font-size: 35pt"}
+
+```{r, fig.align='center', width = 25}
+graph("iss_laic_relSignsTeachersNo") +
+  scale_x_continuous(labels = c("Désaccord", "D'accord"),
+                     breaks = c(0.2, 0.8), expand = c(0.1, 0.1)) +
+  theme(axis.text.x = element_text(size = 9),
+        axis.title.x = element_text(size = 15))
+```
+
+:::{.notes}
+Un peu la mm chose pour signes religieux<br>
+PQ et CAQ auraient encore une fois peut-êre avantage à être + modérés.<br>
+Inverse pour QS
+:::
+
+<!---
+## [Langue française à Montréal]{style="font-size: 35pt"}
+
+```{r, fig.align='center', width = 25}
+graph("iss_lang_worriedFrMtl") +
+  scale_x_continuous(labels = c("Désaccord", "D'accord"),
+                     breaks = c(0.2, 0.8), expand = c(0.1, 0.1)) +
+  theme(axis.text.x = element_text(size = 9),
+        axis.title.x = element_text(size = 15))
+```
+
+:::{.notes}
+Finalement
+:::
+--->
+
+## Prochaines étapes
+Objectif final: modèle systématique qui identifie segments électoraux à cibler ([statique]{style="color: #B3E5FC;"}) et positionnement optimal ([dynamique]{style="color: #FF9800;"})
+
+- Cadre théorique plus développé
+- Données plus exhaustives (données de la boussole électorale)
+- Expériences de sondage &rarr; associer l'IRC à des probabilités, faire des simulations à partir de sondages
+- Potentiel de croissance dynamique: systématiser, simulations, apprentissage automatique, etc.
+
+:::{.notes}
+Machine learning: problème complexe avec plusieurs dimensions, nécessité de simulations etc. Les modèles sont pas nécessairement complexes (régression linéaires avec VI classiques ou SEM), mais la simulation c'est plus complexe<br>
+Optimisation combinatoire
+:::
