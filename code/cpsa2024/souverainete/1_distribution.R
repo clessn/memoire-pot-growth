@@ -6,11 +6,14 @@ library(ggplot2)
 data <- readRDS("_SharedFolder_memoire-pot-growth/data/marts/cpsa2024/survey_data.rds") %>% 
   filter(issue == "iss_nationalisme_souv" &
            party == "CAQ") %>% 
-  mutate(position = ifelse(position == 0.5,
-                           sample(c(0.25, 0.75), size = 1, replace = TRUE),
-                           position),
-         position = ifelse(position == 0.25, 0.33, position),
+  mutate(position = ifelse(position == 0.25, 0.33, position),
          position = ifelse(position == 0.75, 0.67, position))
+
+#table(data$position)
+
+data$position[data$position == 0.5] <- sample(c(0.33, 0.67), sum(data$position == 0.5), replace = TRUE)
+
+table(data$position)
 
 table(data$position, data$source_id, useNA = "always")
 
@@ -35,5 +38,5 @@ data %>%
   scale_x_continuous(labels = choices,
                      breaks = c(0, 0.33, 0.67, 1))
 
-ggsave("_SharedFolder_memoire-pot-growth/graphs/cpsa2024/dynamic_potgrowth/souverainete/1_distribution_souverainete.png",
+ggsave("_SharedFolder_memoire-pot-growth/graphs/cpsa2024/dynamic_potgrowth/souverainete/1_distribution.png",
        width = 8, height = 6, dpi = 300)

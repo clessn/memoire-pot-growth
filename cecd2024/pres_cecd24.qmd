@@ -3,8 +3,8 @@ title: "<span style='font-size: 49pt;'>Opérationnaliser le <span style='color: 
 author: "Hubert Cadieux (première session de maîtrise)<br><br>Sous la co-direction de<br>Catherine Ouellet et Yannick Dufresne"
 format:
   revealjs:
-    #theme: light
-    #incremental: true
+    theme: dark
+    incremental: true
     fontsize: 31pt
   pdf:
     fontsize: 31pt
@@ -194,7 +194,7 @@ ggplot(df_pg, aes(x = weighted_mean_estimate, y = party, fill = party, color = p
   scale_color_manual(values = colors) +
   labs(title = "", x = "\nPotentiel de croissance estimé avec l'IRC\n", y = "",
        caption = "Distribution par circonscription\nLes lignes de quantile représentent les 25e, 50e et 75e centiles de la distribution.") +
-  clessnverse::theme_clean_light() +
+  clessnize::theme_clean_light() +
   theme(legend.position = "none",
         axis.title.x = element_text(hjust = 0.5, size = 20),
         axis.text.x = element_text(size = 20),
@@ -321,7 +321,7 @@ Data %>%
   scale_x_discrete(expand = c(0.015, 0.015)) +
   ylab("") +
   xlab("\nCirconscriptions gagnées par la CAQ") +
-  clessnverse::theme_clean_light() +
+  clessnize::theme_clean_light() +
   labs(caption = "Les barres colorées représentent l'écart entre le premier et le deuxième parti dans la circonscription.") +
   theme(axis.title.x = element_text(hjust = 0.5, size = 25),
         axis.title.y = element_text(hjust = 0.5),
@@ -478,7 +478,7 @@ graph <- function(issuei){
            color = "none") +
     scale_alpha_continuous(name = "IRC moyen: électeurs", range = c(0.1, 1)) +
     #geom_hline(yintercept = 0, color = "black", linewidth = 0.3) +
-    clessnverse::theme_clean_light() +
+    clessnize::theme_clean_light() +
     scale_x_continuous(labels = c(labels_wrapped[1], labels_wrapped[length(labels_wrapped)]),
                        breaks = c(0.1, 0.9),
                        expand = c(0.1, 0.1)) +

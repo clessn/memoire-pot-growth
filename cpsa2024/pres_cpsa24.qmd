@@ -1,0 +1,461 @@
+---
+title: "<span style='font-size: 49pt;'>Operationalizing the <span style='color: #FFC682; font-size:60pt;'>Potential for Growth</span> of Political Parties in a Multiparty System</span>"
+author: "Hubert Cadieux (master's student)<br><br>Under supervision of<br>Catherine Ouellet et Yannick Dufresne"
+format:
+  revealjs:
+    theme: dark
+    incremental: true
+    fontsize: 31pt
+  pdf:
+    fontsize: 31pt
+title-slide-attributes: 
+  data-notes: "Hello, I am Hubert Cadieux. Today, I present the beginning of my thesis project on the potential for growth of political parties by studying the case of Quebec. A topic that needs to be well-theorized and conceptualized before it can be operationalized and studied in a more systematic context, in order to interpret and make strategic recommendations based on observational data.<br>
+The concept is somewhat used in media articles, for example, without really being theorized and validated."
+editor: source
+---
+
+# Context
+
+- Parties face constraints
+  - Institutional, ideological, branding, etc.
+  - Limit and frame the possible actions the party can take &rarr; [***room for maneuver***]{style="color: #FFC682;"}
+
+::: {.notes}
+Institutional: electoral laws, party financing<br>
+Ideological: example of the PQ<br>
+These constraints limit and frame the possible actions<br>
+This is the room for maneuver of the parties
+:::
+
+# Context
+Repertoire of actions within this [***room for maneuver***]{style="color: #FFC682;"}:<br>
+
+- Political communication
+- Positioning on issues
+
+:::{.notes}
+branding, targeting segments, highlighting certain messages, social media
+:::
+
+# Definition
+[***Potential for growth***]{style="color: #FFC682;"}: electoral performance if the available strategies within its room for maneuver are optimized
+
+# Thesis Objective
+
+- Operationalize the potential for growth of parties in a multiparty system
+- Optimize political strategies (political communication, positioning on issues)
+
+::: {.notes}
+Operationalize: quantify from observational data<br>
+Optimization: or at least improve the information that reaches strategists to optimize strategies, systematize
+:::
+
+# Theoretical Framework 
+
+::: {.nonincremental}
+- Anchoring in classical theories of vote choice
+  - [Columbia]{style="font-size: 40pt; color: #FFC682;"} socio-demographic variables (Lazarsfeld et al. 1948, Berelson et al. 1954)
+  - [Michigan]{style="font-size: 40pt; color: #FFC682;"} + party identification, more flexible model (Campbell et al. 1960, Lewis-Beck et al. 2008)
+    - Distinction between long-term and short-term factors
+:::
+
+::: {.notes}
+Columbia: vote predictable by socio-demographic variables<br>
+Michigan<br>
+Added flexibility with party ID and other psychological variables<br>
+Party ID strongly influenced by socio variables, then large effect on the vote<br>
+Long-term and short-term factors
+:::
+
+## Theoretical Framework: Funnel of Causality
+
+
+![](images/entonnoir_causalite.drawio.png){width=80% fig-align="center"}
+
+::: {.notes}
+The theoretical framework fits into the causality model<br>
+This model suggests that each block of factors has a different effect over time<br>
+The more long-term, the more fixed the variable<br>
+:::
+
+## Theoretical Framework: Funnel of Causality
+![](images/entonnoir_causalite_filled.drawio.png){width=80% fig-align="center"}
+
+::: {.notes}
+We will situate the room for maneuver in the short-term blocks, so issues and candidates
+:::
+
+## Funnel of Causality, adaptation to the Quebec context {.smaller}
+
+::: {.nonincremental}
+- Model developed in the American two-party context, 20th century
+- Less strong party identification in Canada (Jenson 1975)
+- Considerable influence of short-term factors on Canadian voters (Blais 2004, Kilibarda et al. 2020)
+- Heterogeneity of salience, micro-publics (Krosnick 1990), hybrid media system
+- Therefore.. considerable room for maneuver
+:::
+
+::: {.notes}
+obviously, it needs to be adapted<br>
+heterogeneity: fragmentation of issue salience and reception channels, especially in the context of social networks, must be considered in the issues/candidates block<br>
+postulate: room for maneuver > than what classical theories suggest
+:::
+
+## Theorizing the Potential for Growth: Two Distinct Concepts
+
+1. [Static]{style="font-size: 50pt; color: #9FD1E8;"} potential for growth: by maintaining its current positions on an issue.<br>[Achieved through political communication strategies.]{style="font-size: 20pt;"}
+  
+2. [Dynamic]{style="font-size: 50pt; color: #FF9800;"} potential for growth: by adopting the optimal set of positions on issues.<br>[Assumes that the static potential for growth is achieved.]{style="font-size: 20pt;"}
+
+::: {.notes}
+Political communication: strategy on social networks, better targeting different segments, highlighting certain messages, etc.<br>
+:::
+
+
+## Application of the Two Concepts
+
+<br>
+
+::: {.nonincremental}
+1. [Static]{style="font-size: 50pt; color: #9FD1E8;"} potential for growth: the recent rise of the PQ
+
+2. [Dynamic]{style="font-size: 50pt; color: #FF9800;"} potential for growth: empirical exploration
+:::
+
+- Data: 8 monthly surveys from January to August 2022 (n = 9135)
+
+## Measuring the Potential for Growth with the RCI
+
+Relative Confidence Index (RCI)
+
+::: {.nonincremental}
+- Developed in the Quebec context (Dufresne et al. 2022, Déry et al. 2022)
+- Addresses the shortcomings of traditional vote intention measures
+  - Continuous index of vote intention
+  - Information on 5 parties for each respondent
+:::
+
+## Measuring the Potential for Growth with the RCI
+
+On a scale of 0 to 10, how likely are you to vote for [party]?
+
+![](images/2_rci_1.png){width=100% fig-align="center"}
+
+## Measuring the Potential for Growth with the RCI
+
+On a scale of 0 to 10, how likely are you to vote for [party]?
+
+![](images/2_rci_2.png){width=100% fig-align="center"}
+
+## Theoretical Advantages of the IRC
+
+::: {.nonincremental}
+- Better suited to multiparty systems
+- Reduces the uncertainty associated with the gap between attitudes (vote intention) and behavior (voting action)
+- Distinguishes between unattainable and attainable voters &rarr; [***potential for growth***]{style="font-size: 40pt; color: #FFC682;"}
+:::
+
+# Application of the [static]{style="color: #9FD1E8;"} potential for growth
+[The recent rise of the PQ]{style="font-size: 40pt;"}
+
+## [Static]{style="color: #9FD1E8;"} Potential for Growth: The Rise of the PQ
+
+![](images/2_projections_QC125.png){width=70% fig-align="center"}
+
+::: {.notes}
+The rise of the PQ is mainly due to the decline of the CAQ<br>
+But why did the PQ benefit and not another challenger?
+:::
+
+## Predicted RCI of Challengers among CAQ voters
+
+![](images/7_potgrowth_estimate_individual.png){width=100% fig-align="center"}
+
+:::{.notes}
+this graph shows the predicted RCI for challengers among CAQ voters at each RCI level for the CAQ
+we clearly see that, on the individual level, PQ was the party that would benefit from caq decline
+:::
+
+
+## Estimated Distribution of Negative RCI Across the 125 Ridings
+
+```{r, fig.align="center"}
+library(dplyr)
+library(ggplot2)
+# data loading ------------------------------------------------------------
+df <- readRDS("~/Dropbox/CLESSN/article_pot-growth/_SharedFolder_article_pot-growth/data/marts/rci_by_riding/provqc2022/aggregated/potgrowth_votesolidity.rds")
+# data wrangling ----------------------------------------------------------
+df_pg <- df %>% 
+  filter(model == "potgrowth", riding_id != "938") %>% 
+  mutate(weighted_mean_estimate == ifelse(weighted_mean_estimate > 0, 0, weighted_mean_estimate))
+df_pg$party <- factor(df_pg$party, levels = c("PCQ", "PQ", "QS", "PLQ", "CAQ"))
+df_vs <- df %>% 
+  filter(model == "vote_solidity", riding_id != "938")
+df_vs$party <- factor(df_vs$party, levels = c("PCQ", "PQ", "QS", "PLQ", "CAQ"))
+# graphs ------------------------------------------------------------------
+colors <- c("CAQ" = "#00cccc", "PLQ" = "#ED1A2D", "PQ" = "#004C9D", "QS" = "#FF5605", "PCQ" = "purple")
+ggplot(df_pg, aes(x = weighted_mean_estimate, y = party, fill = party, color = party)) +
+  ggridges::geom_density_ridges(alpha = 0.4, color = "white", quantile_lines = TRUE) +
+  scale_fill_manual(values = colors) +
+  scale_color_manual(values = colors) +
+  labs(title = "", x = "\nEstimated Potential for Growth with the RCI\n", y = "",
+       caption = "Distribution by constituency\nThe quantile lines represent the 25th, 50th, and 75th percentiles of the distribution.") +
+  clessnize::theme_clean_light() +
+  theme(legend.position = "none",
+        axis.title.x = element_text(hjust = 0.5, size = 20),
+        axis.text.x = element_text(size = 20),
+        axis.text.y = element_text(size = 20),
+        plot.caption = element_text(size = 12)) 
+```
+
+::: {.notes}
+Here we see the distribution of ridings according to their estimated potential for growth for each party<br>
+Estimation based on linear models projected on post-stratification tables<br>
+Models only made on non-voters of the parties, negative IRC<br>
+We can see that the PQ has the highest potential for growth among the challenger parties<br>
+Interesting fact: the CAQ has the highest potential for growth: could the CAQ have won even more?<br>
+This supports the idea that the rise of the PQ is more due to the decline of the CAQ, which was in a good position<br>
+But assuming the CAQ was going to fall, why the PQ?
+:::
+
+## [Potential for Growth of Challengers in Constituencies Won by the CAQ]{style="font-size: 35pt"}
+
+![](images/6_challengers_in_caq_ridings.png){width=100% fig-align="center"}
+
+
+::: {.notes}
+This graph presents the potential for growth on the left and the vote share in the 2022 election of the challenger parties in constituencies won by the CAQ<br>
+If we only consider the vote share on the right, the four parties seem in a good position, especially the PCQ<br>
+In the graph on the left, we see that the PQ was the challenger with the highest potential for growth in CAQ constituencies<br>
+:::
+
+# [Static]{style="color: #9FD1E8;"} Potential for Growth: The Rise of the PQ
+
+By aggregating the IRC at different levels, we can identify where the [static]{style="color: #9FD1E8;"} potential for growth of political parties lies
+
+::: {.notes}
+Not perfect, but we can locate it.<br>
+Aggregated by constituency, but it could be with other variables<br>
+In this case, the PQ simply rode the wave of the CAQ's decline. But clearly, they had potential for growth in CAQ ridings, they could have potentially "converted" them by being aggressive in these segments no matter what<br>
+:::
+
+# Application of the [dynamic]{style="color: #FF9800;"} Potential for Growth
+[Empirical Explorations]{style="font-size: 40pt;"}
+
+::: {.notes}
+We will now turn to the dynamic potential for growth<br>
+Thus achieved with the optimal positioning on issues<br>
+Empirical explorations on 2 issues; qc independence from canada and the wearing of religious symbols by teachers<br>
+:::
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#| label: setting
+
+# Packages ----------------------------------------------------------------
+library(dplyr)
+library(ggplot2)
+library(plotly)
+
+# Data --------------------------------------------------------------------
+survey_data <- readRDS("../_SharedFolder_memoire-pot-growth/data/marts/cpsa2024/survey_data.rds")
+
+# Party positions ---------------------------------------------------------
+party_positions <- readRDS("../_SharedFolder_memoire-pot-growth/data/marts/cpsa2024/party_positions.rds") %>% 
+  mutate(party_position = ifelse(party_position == 0.25 & issue == "iss_nationalisme_souv", 0.33, party_position),
+         party_position = ifelse(party_position == 0.75 & issue == "iss_nationalisme_souv", 0.67, party_position))
+
+# Function -------------------------------------------------------------------
+
+get_graph <- function(issue_slug, choices, xlabel){
+  if (issue_slug == "iss_nationalisme_souv") {
+    distribution <- survey_data %>%
+      filter(issue == issue_slug) %>%
+      mutate(position = ifelse(position == 0.25, 0.33, position),
+             position = ifelse(position == 0.75, 0.67, position)) %>% 
+      group_by(position) %>%
+      summarise(n = n()) %>% 
+      mutate(prop = n / sum(n),
+             estimate_irc = (-1 + prop))
+  } else {
+    distribution <- survey_data %>%
+      filter(issue == issue_slug) %>%
+      group_by(position) %>%
+      summarise(n = n()) %>% 
+      mutate(prop = n / sum(n),
+             estimate_irc = (-1 + prop))
+  }
+  graph_data <- potgrowth::dynamic_potgrowth_data(
+    data = survey_data,
+    parties = potgrowth::qc_parties,
+    issues = issue_slug,
+  ) %>%
+    mutate(
+      estimate_irc = ifelse(estimate_irc > 0, 0, estimate_irc),
+      estimate_irc = ifelse(estimate_irc < -1, -1, estimate_irc),
+      conf_low_irc = ifelse(conf_low_irc > 0, 0, conf_low_irc),
+      conf_low_irc = ifelse(conf_low_irc < -1, -1, conf_low_irc))
+  if (issue_slug == "iss_nationalisme_souv") {
+    graph_data <- graph_data %>%
+      mutate(
+        position = ifelse(position == 0.25, 0.33, position),
+        position = ifelse(position == 0.75, 0.67, position)
+      ) %>%
+      filter(position != "0.5") %>%
+      left_join(party_positions, by = c("party", "issue")) %>%
+      mutate(is_party_position = ifelse(position == party_position, 1, 0))
+  } else {
+    graph_data <- graph_data %>%
+      left_join(party_positions, by = c("party", "issue")) %>%
+      mutate(is_party_position = ifelse(position == party_position, 1, 0))
+  }
+  graph_data2 <- as.data.frame(graph_data) %>%
+    mutate(sd = (conf_high_irc - conf_low_irc) / 2,
+           progress_bar = sapply(estimate_vote, potgrowth::generate_progress_bar),
+           line_opacity = ifelse(is_party_position == 1, 0.3, 0),
+           xticklabel = choices[position])
+  party_positions <- graph_data2 %>% 
+    filter(is_party_position == 1)
+  # Créer le graphique Plotly avec des barres en arrière-plan et un axe y secondaire
+  p <- plot_ly(
+          colors = potgrowth::qc_party_colors,
+          width = 850, height = 550) %>% 
+  add_markers(data = party_positions,
+              text = ~paste0(party, "'s position:\n", xticklabel),
+              hoverinfo = "text",
+              x = ~position,
+              y = ~estimate_irc,
+              split = ~party,
+              color = ~party,
+              legendgroup = ~party,
+              colors = potgrowth::qc_party_colors,
+              marker = list(size = 40,
+                            symbol = "diamond",
+                            opacity = ~line_opacity),
+              showlegend = FALSE) %>%
+  add_lines(data = graph_data2,
+            line = list(width = 1),
+            showlegend = FALSE,
+            x = ~position,
+            y = ~estimate_irc,
+            split = ~party,
+            color = ~party,
+            legendgroup = ~party,
+            colors = potgrowth::qc_party_colors,
+            hoverinfo = "none") %>% 
+  add_markers(x = ~position,
+              y = ~estimate_irc,
+              split = ~party,
+              color = ~party,
+              legendgroup = ~party,
+              marker = list(size = 11),
+              error_y = list(array = ~ sd),
+              text = ~paste0("Acquired votes in segment<br>", progress_bar),
+              hoverinfo = 'text') %>% 
+  layout(
+    yaxis = list(range = c(-1, 0),
+                 title = list(text = "Potential for Growth\n(predicted RCI of non-voters)",
+                              standoff = 30),
+                 tickvals = seq(from = -1, to = 0, by = 0.1),
+                 ticktext = paste0(seq(from = -10, to = 0, by = 1), "   "),
+                 zeroline = FALSE),
+    xaxis = list(title = paste0("\n", xlabel, "\n"),
+                 tickvals = names(choices),
+                 ticktext = choices,
+                 tickfont = list(size = 9.5),
+                 ticklabelposition = "outside",
+                 zeroline = FALSE),
+    margin = list(l = 50, r = 50, t = 60, b = 130),
+    annotations = list(text = "Diamonds indicate the parties' positions on the issue.<br>Data from 2022.",
+                              font = list(size = 12),
+                              showarrow = FALSE,
+                              xref = 'paper', x = 0,
+                              yref = 'paper', y = -0.35)
+  )
+  return(p)
+}
+```
+
+
+## [Dynamic]{style="color: #FF9800;"} Potential for Growth: Quebec Independence
+
+![](images/dyn_souv_distribution.png){width=100% fig-align="center"}
+
+## [Dynamic]{style="color: #FF9800;"} Potential for Growth: Quebec Independence
+
+![](images/dyn_souv_parties_position.png){width=100% fig-align="center"}
+
+:::{.notes}
+are these positions optimal?
+:::
+
+
+## [Dynamic]{style="color: #FF9800;"} Potential for Growth: Quebec Independence
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#| label: iss_souv
+#| out-width: "100%"
+#| out-height: "100%"
+#| fig-format: svg
+
+# Souverainete -------------------------------------------------------------------
+
+issue_slug <- "iss_nationalisme_souv"
+choices <- c(
+  "0" = "Strongly in favor\nof Quebec remaining\nin Canada",
+  "0.33" = "Moderately in favor\nof Quebec remaining\nin Canada",
+  "0.67" = "Moderately in favor\nof Quebec becoming\na sovereign country",
+  "1" = "Strongly in favor\nof Quebec becoming\na sovereign country"
+)
+xlabel <- "Position on Quebec independence"
+get_graph(issue_slug, choices, xlabel)
+```
+
+
+## [Dynamic]{style="color: #FF9800;"} Potential for Growth: Teachers' Religious Symbols
+
+![](images/dyn_relig_distribution.png){width=100% fig-align="center"}
+
+## [Dynamic]{style="color: #FF9800;"} Potential for Growth: Teachers' Religious Symbols
+
+![](images/dyn_relig_parties_position.png){width=100% fig-align="center"}
+
+## [Dynamic]{style="color: #FF9800;"} Potential for Growth: Teachers' Religious Symbols
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#| label: iss_laic_relSignsTeachersNo
+#| out-width: "100%"
+#| out-height: "100%"
+#| fig-format: svg
+
+issue_slug <- "iss_laic_relSignsTeachersNo"
+choices <- c(
+  "0" = "Strongly disagree",
+  "0.25" = "Somewhat disagree",
+  "0.5" = "Neutral",
+  "0.75" = "Somewhat agree",
+  "1" = "Strongly agree"
+)
+xlabel <- "Laicite"
+get_graph(issue_slug, choices, xlabel)
+```
+
+
+
+## Next Steps
+Final objective: systematic model that identifies electoral segments to target ([static]{style="color: #9FD1E8;"}) and optimal positioning ([dynamic]{style="color: #FF9800;"})
+
+<div style="font-size: 20pt;">
+- More developed theoretical framework
+  - Spatial theory of voting
+- Data from the VPL electoral compass
+  - Allows testing of multiple issues in the same model
+  - Issue salience
+- Survey experiments &rarr; associate the IRC with probabilities, perform simulations based on surveys
+- Dynamic potential for growth: systematize, simulations, machine learning, etc.
+</div>
+
+::: {.notes}
+Spatial theory of voting: taking the position of other parties on the issue
+Machine learning: complex problem with multiple dimensions, necessity for simulations etc. The models are not necessarily complex (linear regressions with classic IVs or SEM), but the simulation is more complex<br>
+Combinatorial optimization
+:::

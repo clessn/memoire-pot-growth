@@ -16,7 +16,7 @@ party_positions <- readRDS("_SharedFolder_memoire-pot-growth/data/marts/cpsa2024
 
 graph_data <- potgrowth::dynamic_potgrowth_data(
   data = survey_data,
-  parties = c("PCQ", "QS", "CAQ"),
+  parties = c("PQ", "PLQ"),
   issues = "iss_nationalisme_souv",
 ) %>% 
   mutate(estimate_irc = ifelse(estimate_irc > 0, 0, estimate_irc),
@@ -49,7 +49,7 @@ graph_data %>%
                       conf_low_vote, conf_high_vote, estimate_vote,
                       dodge = 0.5) +
   scale_color_manual(values = potgrowth::qc_party_colors,
-                     labels = c("PCQ" = "CPQ", "CAQ", "QS")) +
+                     labels = c("PQ", "PLQ" = "QLP")) +
   scale_fill_manual(values = potgrowth::qc_party_colors) +
   scale_alpha_continuous(range = c(0, 0.15)) +
   scale_x_discrete(labels = choices,

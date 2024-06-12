@@ -18,7 +18,7 @@ party_positions <- readRDS("_SharedFolder_memoire-pot-growth/data/marts/cpsa2024
     party == "CAQ" ~ "CAQ",
     party == "PQ" ~ "PQ",
     party == "QS" ~ "QS",
-    party == "PLQ" ~ "LPQ",
+    party == "PLQ" ~ "QLP",
     party == "PCQ" ~ "CPQ"
   ))
 

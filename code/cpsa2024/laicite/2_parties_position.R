@@ -1,0 +1,51 @@
+# Packages ----------------------------------------------------------------
+library(dplyr)
+library(ggplot2)
+
+# Data --------------------------------------------------------------------
+party_positions <- readRDS("_SharedFolder_memoire-pot-growth/data/marts/cpsa2024/party_positions.rds") %>% 
+  filter(issue == "iss_laic_relSignsTeachersNo") %>% 
+  mutate(y = case_when(
+    party == "CAQ" ~ 0,
+    party == "PQ" ~ 0.1,
+    party == "QS" ~ 0.1,
+    party == "PLQ" ~ 0,
+    party == "PCQ" ~ 0
+  ),
+  party_label = case_when(
+    party == "CAQ" ~ "CAQ",
+    party == "PQ" ~ "PQ",
+    party == "QS" ~ "QS",
+    party == "PLQ" ~ "QLP",
+    party == "PCQ" ~ "CPQ"
+  ))
+
+# Graph -------------------------------------------------------------------
+
+choices <- c(
+  "0" = "Strongly disagree",
+  "0.25" = "Somewhat disagree",
+  "0.5" = "Neutral",
+  "0.75" = "Somewhat agree",
+  "1" = "Strongly agree"
+)
+
+ggplot(party_positions, aes(x = party_position, y = y)) +
+  geom_text(aes(label = party_label, color = party),
+            show.legend = FALSE, hjust = 0.5) +
+  scale_color_manual(values = potgrowth::qc_party_colors) +
+  ylim(-0.05, 0.15) +
+  clessnize::theme_clean_light() +
+  xlab("\nTeachers should be allowed to wear\nvisible religious symbols at work.") +
+  scale_x_continuous(labels = choices,
+                     breaks = c(0, 0.25, 0.5, 0.75, 1),
+                     limits = c(0, 1)) +
+  labs(caption = "Aggregation of 13 expert surveys.") +
+  theme(axis.text.x = element_text(size = 6.5, hjust = 0.5),
+        axis.title.y = element_blank(),
+        axis.text.y = element_blank(),
+        panel.grid.major.y = element_blank(),
+        plot.caption = element_text(size = 6))
+
+ggsave("_SharedFolder_memoire-pot-growth/graphs/cpsa2024/dynamic_potgrowth/laicite/2_parties_position.png",
+       width = 7, height = 1.4)

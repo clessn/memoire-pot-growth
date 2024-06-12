@@ -8,13 +8,15 @@ survey_data <- readRDS("_SharedFolder_memoire-pot-growth/data/marts/cpsa2024/sur
 
 # Party positions ---------------------------------------------------------
 
-party_positions <- readRDS("_SharedFolder_memoire-pot-growth/data/marts/cpsa2024/party_positions.rds")
+party_positions <- readRDS("_SharedFolder_memoire-pot-growth/data/marts/cpsa2024/party_positions.rds") %>% 
+  mutate(party_position = ifelse(party_position == 0.25, 0.33, party_position),
+         party_position = ifelse(party_position == 0.75, 0.67, party_position))
 
 # Graph -------------------------------------------------------------------
 
 graph_data <- potgrowth::dynamic_potgrowth_data(
   data = survey_data,
-  parties = c("PQ", "PLQ"),
+  parties = c("CAQ", "PCQ", "QS"),
   issues = "iss_nationalisme_souv",
 ) %>% 
   mutate(estimate_irc = ifelse(estimate_irc > 0, 0, estimate_irc),
@@ -47,7 +49,7 @@ graph_data %>%
                       conf_low_vote, conf_high_vote, estimate_vote,
                       dodge = 0.5) +
   scale_color_manual(values = potgrowth::qc_party_colors,
-                     labels = c("PLQ" = "LPQ", "PQ" = "PQ")) +
+                     labels = c("QS", "CAQ", "PCQ" = "CPQ")) +
   scale_fill_manual(values = potgrowth::qc_party_colors) +
   scale_alpha_continuous(range = c(0, 0.15)) +
   scale_x_discrete(labels = choices,

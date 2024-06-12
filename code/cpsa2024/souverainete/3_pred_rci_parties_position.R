@@ -16,7 +16,7 @@ party_positions <- readRDS("_SharedFolder_memoire-pot-growth/data/marts/cpsa2024
 
 graph_data <- potgrowth::dynamic_potgrowth_data(
   data = survey_data,
-  parties = c("PQ", "PLQ"),
+  parties = c("CAQ", "QS", "PCQ"),
   issues = "iss_nationalisme_souv",
 ) %>% 
   mutate(estimate_irc = ifelse(estimate_irc > 0, 0, estimate_irc),
@@ -42,12 +42,14 @@ graph_data %>%
   geom_point(aes(alpha = is_party_position, fill = party),
              position = position_dodge(width = 0.5),
              size = 17, shape = 23, show.legend = FALSE) +
+  geom_linerange(aes(ymin = conf_low_irc, ymax = conf_high_irc),
+                 position = position_dodge(width = 0.5)) +
   geom_line(aes(color = party, group = party),
             position = position_dodge(width = 0.5),
             linetype = "dashed") +
   geom_point(position = position_dodge(width = 0.5)) +
   scale_color_manual(values = potgrowth::qc_party_colors,
-                     labels = c("PLQ" = "LPQ", "PQ" = "PQ")) +
+                     labels = c("QS", "CAQ", "PCQ" = "CPQ")) +
   scale_fill_manual(values = potgrowth::qc_party_colors) +
   scale_alpha_continuous(range = c(0, 0.15)) +
   scale_x_discrete(labels = choices,
@@ -55,7 +57,7 @@ graph_data %>%
   scale_y_continuous(breaks = c(-1, -0.75, -0.5, -0.25, 0),
                      labels = c(-1, -0.75, -0.5, -0.25, 0) * 10,
                      limits = c(-1, 0)) +
-  labs(caption = "Diamonds indicate the parties' positions on the issue.") +
+  labs(caption = "Diamonds indicate the parties' positions on the issue.\nVertical lines indicate the 95% confidence interval.") +
   guides(alpha = "none") +
   clessnize::theme_clean_light() +
   xlab("\nPosition on Quebec's independence") +
