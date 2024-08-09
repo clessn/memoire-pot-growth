@@ -1,0 +1,73 @@
+---
+title: "Quebec Independence"
+format: html
+editor: visual
+---
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#| file: ../scripts/setting.R
+```
+
+## Among All
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#| label: iss_souv
+#| fig-format: svg
+
+issue_slug <- "iss_nationalisme_souv"
+choices <- c(
+  "0" = "Strongly in favor\nof Quebec remaining\nin Canada",
+  "0.33" = "Moderately in favor\nof Quebec remaining\nin Canada",
+  "0.67" = "Moderately in favor\nof Quebec becoming\na sovereign country",
+  "1" = "Strongly in favor\nof Quebec becoming\na sovereign country"
+)
+xlabel <- "Position on Quebec independence"
+potgrowth::get_quarto_graph(survey_data, issue_slug, party_positions, choices, xlabel)
+```
+
+[Diamonds indicate the parties' positions on the issue. Data from 2022.]{style="font-size: 9pt;"}
+
+
+## Among Francophones
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#| label: iss_souv_franco
+#| fig-format: svg
+
+survey_data2 <- survey_data[survey_data$lang == "french", ]
+
+issue_slug <- "iss_nationalisme_souv"
+choices <- c(
+  "0" = "Strongly in favor\nof Quebec remaining\nin Canada",
+  "0.33" = "Moderately in favor\nof Quebec remaining\nin Canada",
+  "0.67" = "Moderately in favor\nof Quebec becoming\na sovereign country",
+  "1" = "Strongly in favor\nof Quebec becoming\na sovereign country"
+)
+xlabel <- "Position on Quebec independence"
+potgrowth::get_quarto_graph(survey_data2, issue_slug, party_positions,
+                            choices, xlabel, remove_variables_from_model = "lang")
+```
+
+[Diamonds indicate the parties' positions on the issue. Data from 2022.]{style="font-size: 9pt;"}
+
+
+## Among Anglophones and Allophones
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#| label: iss_souv_anglo
+#| fig-format: svg
+
+survey_data3 <- survey_data[survey_data$lang == "english_other", ]
+
+issue_slug <- "iss_nationalisme_souv"
+choices <- c(
+  "0" = "Strongly in favor\nof Quebec remaining\nin Canada",
+  "0.33" = "Moderately in favor\nof Quebec remaining\nin Canada",
+  "0.67" = "Moderately in favor\nof Quebec becoming\na sovereign country",
+  "1" = "Strongly in favor\nof Quebec becoming\na sovereign country"
+)
+xlabel <- "Position on Quebec independence"
+potgrowth::get_quarto_graph(survey_data3, issue_slug, party_positions, choices, xlabel, remove_variables_from_model = "lang")
+```
+
+[Diamonds indicate the parties' positions on the issue. Data from 2022.]{style="font-size: 9pt;"}

@@ -1,0 +1,327 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Dynamic Potential for Growth",
+    "section": "",
+    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site"
+  },
+  {
+    "objectID": "content_files/more.html",
+    "href": "content_files/more.html",
+    "title": "More",
+    "section": "",
+    "text": "Nouveau stock icitte"
+  },
+  {
+    "objectID": "home_files/about.html",
+    "href": "home_files/about.html",
+    "title": "About",
+    "section": "",
+    "text": "Coming…\nAbout this site: - For my thesis",
+    "crumbs": [
+      "Welcome!",
+      "About"
+    ]
+  },
+  {
+    "objectID": "home_files/index.html",
+    "href": "home_files/index.html",
+    "title": "Dynamic Potential for Growth",
+    "section": "",
+    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.",
+    "crumbs": [
+      "Welcome!",
+      "Home"
+    ]
+  },
+  {
+    "objectID": "home_files/more.html",
+    "href": "home_files/more.html",
+    "title": "More",
+    "section": "",
+    "text": "Nouveau stock icitte",
+    "crumbs": [
+      "Home",
+      "Ben plus icitte"
+    ]
+  },
+  {
+    "objectID": "predicted_rci_files/iss_souv.html",
+    "href": "predicted_rci_files/iss_souv.html",
+    "title": "Quebec Independence",
+    "section": "",
+    "text": "Diamonds indicate the parties’ positions on the issue. Data from 2022.",
+    "crumbs": [
+      "Compare Parties on Issues",
+      "Quebec Independence"
+    ]
+  },
+  {
+    "objectID": "scripts/setting.html",
+    "href": "scripts/setting.html",
+    "title": "Setting data and functions",
+    "section": "",
+    "text": "# Packages ----------------------------------------------------------------\nlibrary(dplyr)\n\n\nAttachement du package : 'dplyr'\n\n\nLes objets suivants sont masqués depuis 'package:stats':\n\n    filter, lag\n\n\nLes objets suivants sont masqués depuis 'package:base':\n\n    intersect, setdiff, setequal, union\n\nlibrary(ggplot2)\nlibrary(plotly)\n\n\nAttachement du package : 'plotly'\n\n\nL'objet suivant est masqué depuis 'package:ggplot2':\n\n    last_plot\n\n\nL'objet suivant est masqué depuis 'package:stats':\n\n    filter\n\n\nL'objet suivant est masqué depuis 'package:graphics':\n\n    layout\n\n# Data --------------------------------------------------------------------\nsurvey_data &lt;- readRDS(\"../../../../_SharedFolder_memoire-pot-growth/data/marts/cpsa2024/survey_data.rds\")\n\n# Party positions ---------------------------------------------------------\nparty_positions &lt;- readRDS(\"../../../../_SharedFolder_memoire-pot-growth/data/marts/cpsa2024/party_positions.rds\") %&gt;% \n  mutate(party_position = ifelse(party_position == 0.25 & issue == \"iss_nationalisme_souv\", 0.33, party_position),\n         party_position = ifelse(party_position == 0.75 & issue == \"iss_nationalisme_souv\", 0.67, party_position))\n\n# Function -------------------------------------------------------------------\n\nget_graph &lt;- function(issue_slug, choices, xlabel){\n  if (issue_slug == \"iss_nationalisme_souv\") {\n    distribution &lt;- survey_data %&gt;%\n      filter(issue == issue_slug) %&gt;%\n      mutate(position = ifelse(position == 0.25, 0.33, position),\n             position = ifelse(position == 0.75, 0.67, position)) %&gt;% \n      group_by(position) %&gt;%\n      summarise(n = n()) %&gt;% \n      mutate(prop = n / sum(n),\n             estimate_irc = (-1 + prop))\n  } else {\n    distribution &lt;- survey_data %&gt;%\n      filter(issue == issue_slug) %&gt;%\n      group_by(position) %&gt;%\n      summarise(n = n()) %&gt;% \n      mutate(prop = n / sum(n),\n             estimate_irc = (-1 + prop))\n  }\n  graph_data &lt;- potgrowth::dynamic_potgrowth_data(\n    data = survey_data,\n    parties = potgrowth::qc_parties,\n    issues = issue_slug,\n  ) %&gt;%\n    mutate(\n      estimate_irc = ifelse(estimate_irc &gt; 0, 0, estimate_irc),\n      estimate_irc = ifelse(estimate_irc &lt; -1, -1, estimate_irc),\n      conf_low_irc = ifelse(conf_low_irc &gt; 0, 0, conf_low_irc),\n      conf_low_irc = ifelse(conf_low_irc &lt; -1, -1, conf_low_irc))\n  if (issue_slug == \"iss_nationalisme_souv\") {\n    graph_data &lt;- graph_data %&gt;%\n      mutate(\n        position = ifelse(position == 0.25, 0.33, position),\n        position = ifelse(position == 0.75, 0.67, position)\n      ) %&gt;%\n      filter(position != \"0.5\") %&gt;%\n      left_join(party_positions, by = c(\"party\", \"issue\")) %&gt;%\n      mutate(is_party_position = ifelse(position == party_position, 1, 0))\n  } else {\n    graph_data &lt;- graph_data %&gt;%\n      left_join(party_positions, by = c(\"party\", \"issue\")) %&gt;%\n      mutate(is_party_position = ifelse(position == party_position, 1, 0))\n  }\n  graph_data2 &lt;- as.data.frame(graph_data) %&gt;%\n    mutate(sd = (conf_high_irc - conf_low_irc) / 2,\n           progress_bar = sapply(estimate_vote, potgrowth::generate_progress_bar),\n           line_opacity = ifelse(is_party_position == 1, 0.3, 0),\n           xticklabel = choices[position])\n  party_positions &lt;- graph_data2 %&gt;% \n    filter(is_party_position == 1)\n  # Créer le graphique Plotly avec des barres en arrière-plan et un axe y secondaire\n  p &lt;- plot_ly(\n    colors = potgrowth::qc_party_colors) %&gt;% \n    add_markers(data = party_positions,\n                text = ~paste0(party, \"'s position:\\n\", xticklabel),\n                hoverinfo = \"text\",\n                x = ~position,\n                y = ~estimate_irc,\n                split = ~party,\n                color = ~party,\n                legendgroup = ~party,\n                colors = potgrowth::qc_party_colors,\n                marker = list(size = 40,\n                              symbol = \"diamond\",\n                              opacity = ~line_opacity),\n                showlegend = FALSE) %&gt;%\n    add_lines(data = graph_data2,\n              line = list(width = 1),\n              showlegend = FALSE,\n              x = ~position,\n              y = ~estimate_irc,\n              split = ~party,\n              color = ~party,\n              legendgroup = ~party,\n              colors = potgrowth::qc_party_colors,\n              hoverinfo = \"none\") %&gt;% \n    add_markers(x = ~position,\n                y = ~estimate_irc,\n                split = ~party,\n                color = ~party,\n                legendgroup = ~party,\n                marker = list(size = 11),\n                error_y = list(array = ~ sd),\n                text = ~paste0(\"Acquired votes in segment&lt;br&gt;\", progress_bar),\n                hoverinfo = 'text') %&gt;% \n    layout(\n      yaxis = list(range = c(-1, 0),\n                   title = list(text = \"Potential for Growth\\n(predicted RCI of non-voters)\",\n                                standoff = 30),\n                   tickvals = seq(from = -1, to = 0, by = 0.1),\n                   ticktext = paste0(seq(from = -10, to = 0, by = 1), \"   \"),\n                   zeroline = FALSE),\n      xaxis = list(title = paste0(\"\\n\", xlabel, \"\\n\"),\n                   tickvals = names(choices),\n                   ticktext = choices,\n                   tickfont = list(size = 9.5),\n                   ticklabelposition = \"outside\",\n                   zeroline = FALSE),\n      annotations = list(text = \"Diamonds ENCORE indicate the parties' positions on the issue.&lt;br&gt;Data from 2022.\",\n                         font = list(size = 12),\n                         showarrow = FALSE,\n                         xref = 'paper', x = 0,\n                         yref = 'paper', y = -0.35),\n      autosize = TRUE,\n      automargin = TRUE\n    )\n  return(p)\n}"
+  },
+  {
+    "objectID": "predicted_rci_files/iss_laicite.html",
+    "href": "predicted_rci_files/iss_laicite.html",
+    "title": "Secularism: Teachers",
+    "section": "",
+    "text": "Diamonds indicate the parties’ positions on the issue. Data from 2022.",
+    "crumbs": [
+      "Compare Parties on Issues",
+      "Secularism: Teachers"
+    ]
+  },
+  {
+    "objectID": "predicted_rci_files/iss_3elien.html",
+    "href": "predicted_rci_files/iss_3elien.html",
+    "title": "Quebec 3rd link",
+    "section": "",
+    "text": "Diamonds indicate the parties’ positions on the issue. Data from 2022.",
+    "crumbs": [
+      "Compare Parties on Issues",
+      "Quebec 3rd link"
+    ]
+  },
+  {
+    "objectID": "predicted_rci_files/iss_3elien.html#in-capitale-nationale-only",
+    "href": "predicted_rci_files/iss_3elien.html#in-capitale-nationale-only",
+    "title": "Quebec 3rd link",
+    "section": "In Capitale-Nationale only",
+    "text": "In Capitale-Nationale only",
+    "crumbs": [
+      "Compare Parties on Issues",
+      "Quebec 3rd link"
+    ]
+  },
+  {
+    "objectID": "predicted_rci_files/iss_3elien.html#in-the-rest-of-the-province",
+    "href": "predicted_rci_files/iss_3elien.html#in-the-rest-of-the-province",
+    "title": "Quebec 3rd link",
+    "section": "In the Rest of the Province",
+    "text": "In the Rest of the Province",
+    "crumbs": [
+      "Compare Parties on Issues",
+      "Quebec 3rd link"
+    ]
+  },
+  {
+    "objectID": "predicted_rci_files/iss_3elien.html#in-all-the-province",
+    "href": "predicted_rci_files/iss_3elien.html#in-all-the-province",
+    "title": "Quebec 3rd link",
+    "section": "",
+    "text": "Diamonds indicate the parties’ positions on the issue. Data from 2022.",
+    "crumbs": [
+      "Compare Parties on Issues",
+      "Quebec 3rd link"
+    ]
+  },
+  {
+    "objectID": "compare_parties_on_issues/iss_souv.html",
+    "href": "compare_parties_on_issues/iss_souv.html",
+    "title": "Quebec Independence",
+    "section": "",
+    "text": "Diamonds indicate the parties’ positions on the issue. Data from 2022.",
+    "crumbs": [
+      "Compare Parties on Issues",
+      "Quebec Independence"
+    ]
+  },
+  {
+    "objectID": "compare_parties_on_issues/iss_3elien.html",
+    "href": "compare_parties_on_issues/iss_3elien.html",
+    "title": "Quebec 3rd link",
+    "section": "",
+    "text": "Diamonds indicate the parties’ positions on the issue. Data from 2022.",
+    "crumbs": [
+      "Compare Parties on Issues",
+      "Quebec 3rd link"
+    ]
+  },
+  {
+    "objectID": "compare_parties_on_issues/iss_3elien.html#in-all-the-province",
+    "href": "compare_parties_on_issues/iss_3elien.html#in-all-the-province",
+    "title": "Quebec 3rd link",
+    "section": "",
+    "text": "Diamonds indicate the parties’ positions on the issue. Data from 2022.",
+    "crumbs": [
+      "Compare Parties on Issues",
+      "Quebec 3rd link"
+    ]
+  },
+  {
+    "objectID": "compare_parties_on_issues/iss_3elien.html#in-capitale-nationale-only",
+    "href": "compare_parties_on_issues/iss_3elien.html#in-capitale-nationale-only",
+    "title": "Quebec 3rd link",
+    "section": "In Capitale-Nationale only",
+    "text": "In Capitale-Nationale only",
+    "crumbs": [
+      "Compare Parties on Issues",
+      "Quebec 3rd link"
+    ]
+  },
+  {
+    "objectID": "compare_parties_on_issues/iss_3elien.html#in-the-rest-of-the-province",
+    "href": "compare_parties_on_issues/iss_3elien.html#in-the-rest-of-the-province",
+    "title": "Quebec 3rd link",
+    "section": "In the Rest of the Province",
+    "text": "In the Rest of the Province",
+    "crumbs": [
+      "Compare Parties on Issues",
+      "Quebec 3rd link"
+    ]
+  },
+  {
+    "objectID": "compare_parties_on_issues/iss_laicite.html",
+    "href": "compare_parties_on_issues/iss_laicite.html",
+    "title": "Secularism: Teachers",
+    "section": "",
+    "text": "Diamonds indicate the parties’ positions on the issue. Data from 2022.",
+    "crumbs": [
+      "Compare Parties on Issues",
+      "Secularism: Teachers"
+    ]
+  },
+  {
+    "objectID": "home_files/play_yourself.html",
+    "href": "home_files/play_yourself.html",
+    "title": "Play with it Yourself",
+    "section": "",
+    "text": "Coming…",
+    "crumbs": [
+      "Welcome!",
+      "Play with it Yourself!"
+    ]
+  },
+  {
+    "objectID": "home_files/methodology.html",
+    "href": "home_files/methodology.html",
+    "title": "Methodology",
+    "section": "",
+    "text": "Coming…",
+    "crumbs": [
+      "Welcome!",
+      "Methodology"
+    ]
+  },
+  {
+    "objectID": "compare_parties_on_issues/iss_souv.html#among-all",
+    "href": "compare_parties_on_issues/iss_souv.html#among-all",
+    "title": "Quebec Independence",
+    "section": "",
+    "text": "Diamonds indicate the parties’ positions on the issue. Data from 2022.",
+    "crumbs": [
+      "Compare Parties on Issues",
+      "Quebec Independence"
+    ]
+  },
+  {
+    "objectID": "compare_parties_on_issues/iss_souv.html#among-francophones",
+    "href": "compare_parties_on_issues/iss_souv.html#among-francophones",
+    "title": "Quebec Independence",
+    "section": "Among Francophones",
+    "text": "Among Francophones\n\n\n\n\n\n\nDiamonds indicate the parties’ positions on the issue. Data from 2022.",
+    "crumbs": [
+      "Compare Parties on Issues",
+      "Quebec Independence"
+    ]
+  },
+  {
+    "objectID": "compare_parties_on_issues/iss_souv.html#among-anglophones-and-allophones",
+    "href": "compare_parties_on_issues/iss_souv.html#among-anglophones-and-allophones",
+    "title": "Quebec Independence",
+    "section": "Among Anglophones and Allophones",
+    "text": "Among Anglophones and Allophones\n\n\n\n\n\n\nDiamonds indicate the parties’ positions on the issue. Data from 2022.",
+    "crumbs": [
+      "Compare Parties on Issues",
+      "Quebec Independence"
+    ]
+  },
+  {
+    "objectID": "compare_parties_on_issues/iss_systemic_racism.html",
+    "href": "compare_parties_on_issues/iss_systemic_racism.html",
+    "title": "Systemic Racism",
+    "section": "",
+    "text": "Diamonds indicate the parties’ positions on the issue. Data from 2022.",
+    "crumbs": [
+      "Compare Parties on Issues",
+      "Systemic Racism"
+    ]
+  },
+  {
+    "objectID": "parties_dashboards/caq.html",
+    "href": "parties_dashboards/caq.html",
+    "title": "CAQ Dashboard",
+    "section": "",
+    "text": "Diamonds indicate the party’s position on the issue. Data from 2022.",
+    "crumbs": [
+      "Parties' Dashboards",
+      "CAQ"
+    ]
+  },
+  {
+    "objectID": "home_files/guide_interpret.html",
+    "href": "home_files/guide_interpret.html",
+    "title": "Guide to Interpret the Graphs",
+    "section": "",
+    "text": "Coming…",
+    "crumbs": [
+      "Welcome!",
+      "Guide to Interpret the Graphs"
+    ]
+  },
+  {
+    "objectID": "parties_dashboards/cpq.html",
+    "href": "parties_dashboards/cpq.html",
+    "title": "CPQ Dashboard",
+    "section": "",
+    "text": "Diamonds indicate the party’s position on the issue. Data from 2022.",
+    "crumbs": [
+      "Parties' Dashboards",
+      "CPQ"
+    ]
+  },
+  {
+    "objectID": "parties_dashboards/qlp.html",
+    "href": "parties_dashboards/qlp.html",
+    "title": "QLP Dashboard",
+    "section": "",
+    "text": "Diamonds indicate the party’s position on the issue. Data from 2022.",
+    "crumbs": [
+      "Parties' Dashboards",
+      "QLP"
+    ]
+  },
+  {
+    "objectID": "parties_dashboards/qs.html",
+    "href": "parties_dashboards/qs.html",
+    "title": "QS Dashboard",
+    "section": "",
+    "text": "Diamonds indicate the party’s position on the issue. Data from 2022.",
+    "crumbs": [
+      "Parties' Dashboards",
+      "QS"
+    ]
+  },
+  {
+    "objectID": "parties_dashboards/pq.html",
+    "href": "parties_dashboards/pq.html",
+    "title": "PQ Dashboard",
+    "section": "",
+    "text": "Diamonds indicate the party’s position on the issue. Data from 2022.",
+    "crumbs": [
+      "Parties' Dashboards",
+      "PQ"
+    ]
+  }
+]

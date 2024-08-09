@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.555">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Dynamic Potential for Growth - CPQ Dashboard</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="../site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<script src="../site_libs/plotly-binding-4.10.4/plotly.js"></script>
+<script src="../site_libs/typedarray-0.1/typedarray.min.js"></script>
+<script src="../site_libs/jquery-3.5.1/jquery.min.js"></script>
+<link href="../site_libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet">
+<script src="../site_libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+<link href="../site_libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="../site_libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../parties_dashboards/caq.html">Parties’ Dashboards</a></li><li class="breadcrumb-item"><a href="../parties_dashboards/cpq.html">CPQ</a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Dynamic Potential for Growth</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Welcome!</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../home_files/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Home</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../home_files/methodology.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Methodology</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../home_files/guide_interpret.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Guide to Interpret the Graphs</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../home_files/about.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../home_files/play_yourself.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Play with it Yourself!</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Compare Parties on Issues</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../compare_parties_on_issues/iss_souv.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Quebec Independence</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../compare_parties_on_issues/iss_laicite.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Secularism: Teachers</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../compare_parties_on_issues/iss_3elien.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Quebec 3rd link</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../compare_parties_on_issues/iss_systemic_racism.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Systemic Racism</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">Parties’ Dashboards</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../parties_dashboards/caq.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">CAQ</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../parties_dashboards/pq.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">PQ</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../parties_dashboards/qlp.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">QLP</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../parties_dashboards/qs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">QS</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../parties_dashboards/cpq.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">CPQ</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../parties_dashboards/caq.html">Parties’ Dashboards</a></li><li class="breadcrumb-item"><a href="../parties_dashboards/cpq.html">CPQ</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">CPQ Dashboard</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="cell">
+<div class="cell-output-display">
+<div id="htmlwidget-ac1a06d0a6ae8a76e3ca" style="width:100%;height:450px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-ac1a06d0a6ae8a76e3ca">{"x":{"visdat":{"337235f6f77f6":["function () ","plotlyVisDat"],"33723392ef6b9":["function () ","data"],"337232afad90b":["function () ","data"]},"cur_data":"337232afad90b","attrs":{"33723392ef6b9":{"colors":["#FF5733","#33FF57","#3357FF","#FF33A1","#FFD700","#FF8C00","#8A2BE2","#00CED1","#DC143C","#00FF7F","#FF1493","#7FFF00","#FF4500","#2E8B57","#DAA520","#9400D3","#FF6347","#4682B4"],"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"x":{},"y":{},"type":"scatter","mode":"markers","hoverinfo":"none","split":{},"color":{},"legendgroup":{},"marker":{"size":40,"symbol":"diamond","opacity":{}},"showlegend":false,"inherit":true},"337232afad90b":{"colors":["#FF5733","#33FF57","#3357FF","#FF33A1","#FFD700","#FF8C00","#8A2BE2","#00CED1","#DC143C","#00FF7F","#FF1493","#7FFF00","#FF4500","#2E8B57","#DAA520","#9400D3","#FF6347","#4682B4"],"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"x":{},"y":{},"type":"scatter","mode":"lines","line":{"width":1},"showlegend":false,"split":{},"color":{},"legendgroup":{},"hoverinfo":"none","inherit":true},"337232afad90b.1":{"colors":["#FF5733","#33FF57","#3357FF","#FF33A1","#FFD700","#FF8C00","#8A2BE2","#00CED1","#DC143C","#00FF7F","#FF1493","#7FFF00","#FF4500","#2E8B57","#DAA520","#9400D3","#FF6347","#4682B4"],"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"x":{},"y":{},"type":"scatter","mode":"markers","split":{},"color":{},"legendgroup":{},"name":{},"marker":{"size":11},"error_y":{"array":{}},"text":{},"hoverinfo":"text","inherit":true}},"layout":{"width":692.5,"margin":{"b":25,"l":25,"t":25,"r":25},"legend":{"font":{"size":8},"x":4,"xanchor":"right","traceorder":"normal","itemsizing":"constant","ncol":2,"title":{"text":""},"tracegroupgap":20},"yaxis":{"domain":[0,1],"automargin":true,"range":[-1,0],"title":{"text":"Potential for Growth<br />(predicted RCI of non-voters)","standoff":15},"tickvals":[-1,-0.90000000000000002,-0.80000000000000004,-0.69999999999999996,-0.59999999999999998,-0.5,-0.39999999999999991,-0.29999999999999993,-0.19999999999999996,-0.099999999999999978,0],"ticktext":["-10   ","-9   ","-8   ","-7   ","-6   ","-5   ","-4   ","-3   ","-2   ","-1   ","0   "],"zeroline":false},"xaxis":{"domain":[0,1],"automargin":true,"title":{"text":"Position on the issue"},"tickvals":[0,0.33000000000000002,0.67000000000000004,1],"ticktext":["","","",""],"zeroline":false},"autosize":false,"hovermode":"closest","showlegend":true},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":["0"],"y":[-0.90445384676756146],"type":"scatter","mode":"markers","hoverinfo":"none","legendgroup":"iss_enviro_envGvtMore","marker":{"color":"rgba(255,87,51,1)","size":40,"symbol":"diamond","opacity":0.29999999999999999,"line":{"color":"rgba(255,87,51,1)"}},"showlegend":false,"name":"iss_enviro_envGvtMore","textfont":{"color":"rgba(255,87,51,1)"},"error_y":{"color":"rgba(255,87,51,1)"},"error_x":{"color":"rgba(255,87,51,1)"},"line":{"color":"rgba(255,87,51,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["1"],"y":[-0.77971975924862169],"type":"scatter","mode":"markers","hoverinfo":"none","legendgroup":"iss_immig_immAdapt","marker":{"color":"rgba(51,255,87,1)","size":40,"symbol":"diamond","opacity":0.29999999999999999,"line":{"color":"rgba(51,255,87,1)"}},"showlegend":false,"name":"iss_immig_immAdapt","textfont":{"color":"rgba(51,255,87,1)"},"error_y":{"color":"rgba(51,255,87,1)"},"error_x":{"color":"rgba(51,255,87,1)"},"line":{"color":"rgba(51,255,87,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["0.33"],"y":[-0.72427515100073014],"type":"scatter","mode":"markers","hoverinfo":"none","legendgroup":"iss_lang_worriedFrMtl","marker":{"color":"rgba(220,20,60,1)","size":40,"symbol":"diamond","opacity":0.29999999999999999,"line":{"color":"rgba(220,20,60,1)"}},"showlegend":false,"name":"iss_lang_worriedFrMtl","textfont":{"color":"rgba(220,20,60,1)"},"error_y":{"color":"rgba(220,20,60,1)"},"error_x":{"color":"rgba(220,20,60,1)"},"line":{"color":"rgba(220,20,60,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["0.33"],"y":[-0.72109820747925546],"type":"scatter","mode":"markers","hoverinfo":"none","legendgroup":"iss_lang_worriedFrProv","marker":{"color":"rgba(0,255,127,1)","size":40,"symbol":"diamond","opacity":0.29999999999999999,"line":{"color":"rgba(0,255,127,1)"}},"showlegend":false,"name":"iss_lang_worriedFrProv","textfont":{"color":"rgba(0,255,127,1)"},"error_y":{"color":"rgba(0,255,127,1)"},"error_x":{"color":"rgba(0,255,127,1)"},"line":{"color":"rgba(0,255,127,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["1"],"y":[-0.59557683011514473],"type":"scatter","mode":"markers","hoverinfo":"none","legendgroup":"iss_liberty_qcMissLiberty","marker":{"color":"rgba(255,20,147,1)","size":40,"symbol":"diamond","opacity":0.29999999999999999,"line":{"color":"rgba(255,20,147,1)"}},"showlegend":false,"name":"iss_liberty_qcMissLiberty","textfont":{"color":"rgba(255,20,147,1)"},"error_y":{"color":"rgba(255,20,147,1)"},"error_x":{"color":"rgba(255,20,147,1)"},"line":{"color":"rgba(255,20,147,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["0.67"],"y":[-0.7483718893800545],"type":"scatter","mode":"markers","hoverinfo":"none","legendgroup":"iss_lien3_accord","marker":{"color":"rgba(127,255,0,1)","size":40,"symbol":"diamond","opacity":0.29999999999999999,"line":{"color":"rgba(127,255,0,1)"}},"showlegend":false,"name":"iss_lien3_accord","textfont":{"color":"rgba(127,255,0,1)"},"error_y":{"color":"rgba(127,255,0,1)"},"error_x":{"color":"rgba(127,255,0,1)"},"line":{"color":"rgba(127,255,0,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["1"],"y":[-0.73875042098977328],"type":"scatter","mode":"markers","hoverinfo":"none","legendgroup":"iss_lien3_accordDim","marker":{"color":"rgba(255,69,0,1)","size":40,"symbol":"diamond","opacity":0.29999999999999999,"line":{"color":"rgba(255,69,0,1)"}},"showlegend":false,"name":"iss_lien3_accordDim","textfont":{"color":"rgba(255,69,0,1)"},"error_y":{"color":"rgba(255,69,0,1)"},"error_x":{"color":"rgba(255,69,0,1)"},"line":{"color":"rgba(255,69,0,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["0"],"y":[-0.78473280487200014],"type":"scatter","mode":"markers","hoverinfo":"none","legendgroup":"iss_nationalisme_souv","marker":{"color":"rgba(46,139,87,1)","size":40,"symbol":"diamond","opacity":0.29999999999999999,"line":{"color":"rgba(46,139,87,1)"}},"showlegend":false,"name":"iss_nationalisme_souv","textfont":{"color":"rgba(46,139,87,1)"},"error_y":{"color":"rgba(46,139,87,1)"},"error_x":{"color":"rgba(46,139,87,1)"},"line":{"color":"rgba(46,139,87,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["0"],"y":[-0.79328771122107644],"type":"scatter","mode":"markers","hoverinfo":"none","legendgroup":"iss_newleft_wokeCensor","marker":{"color":"rgba(148,0,211,1)","size":40,"symbol":"diamond","opacity":0.29999999999999999,"line":{"color":"rgba(148,0,211,1)"}},"showlegend":false,"name":"iss_newleft_wokeCensor","textfont":{"color":"rgba(148,0,211,1)"},"error_y":{"color":"rgba(148,0,211,1)"},"error_x":{"color":"rgba(148,0,211,1)"},"line":{"color":"rgba(148,0,211,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["0"],"y":[-0.8863821408901924],"type":"scatter","mode":"markers","hoverinfo":"none","legendgroup":"iss_newleft_wokeSysRaci","marker":{"color":"rgba(70,130,180,1)","size":40,"symbol":"diamond","opacity":0.29999999999999999,"line":{"color":"rgba(70,130,180,1)"}},"showlegend":false,"name":"iss_newleft_wokeSysRaci","textfont":{"color":"rgba(70,130,180,1)"},"error_y":{"color":"rgba(70,130,180,1)"},"error_x":{"color":"rgba(70,130,180,1)"},"line":{"color":"rgba(70,130,180,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["0"],"y":[-0.8055376270461142],"type":"scatter","mode":"markers","hoverinfo":"none","legendgroup":"iss_newleft_wokenoWhites","marker":{"color":"rgba(255,99,71,1)","size":40,"symbol":"diamond","opacity":0.29999999999999999,"line":{"color":"rgba(255,99,71,1)"}},"showlegend":false,"name":"iss_newleft_wokenoWhites","textfont":{"color":"rgba(255,99,71,1)"},"error_y":{"color":"rgba(255,99,71,1)"},"error_x":{"color":"rgba(255,99,71,1)"},"line":{"color":"rgba(255,99,71,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["0","0.33","0.67","1"],"y":[-0.90445384676756146,-0.72024413696521739,-0.73740746805942436,-0.78490936377698772],"type":"scatter","mode":"lines","line":{"color":"rgba(255,87,51,1)","width":1},"showlegend":false,"legendgroup":"iss_enviro_envGvtMore","hoverinfo":["none","none","none","none"],"name":"iss_enviro_envGvtMore","marker":{"color":"rgba(255,87,51,1)","line":{"color":"rgba(255,87,51,1)"}},"textfont":{"color":"rgba(255,87,51,1)"},"error_y":{"color":"rgba(255,87,51,1)"},"error_x":{"color":"rgba(255,87,51,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["0","0.33","0.67","1"],"y":[-0.74395836008097715,-0.72076851340421799,-0.74528377380581889,-0.77971975924862169],"type":"scatter","mode":"lines","line":{"color":"rgba(51,255,87,1)","width":1},"showlegend":false,"legendgroup":"iss_immig_immAdapt","hoverinfo":["none","none","none","none"],"name":"iss_immig_immAdapt","marker":{"color":"rgba(51,255,87,1)","line":{"color":"rgba(51,255,87,1)"}},"textfont":{"color":"rgba(51,255,87,1)"},"error_y":{"color":"rgba(51,255,87,1)"},"error_x":{"color":"rgba(51,255,87,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["0","0.33","0.67","1"],"y":[-0.91062855665130837,-0.89474982922684765,-0.78346181555579297,-0.85643531840007181],"type":"scatter","mode":"lines","line":{"color":"rgba(51,87,255,1)","width":1},"showlegend":false,"legendgroup":"iss_immig_immLearnFr","hoverinfo":["none","none","none","none"],"name":"iss_immig_immLearnFr","marker":{"color":"rgba(51,87,255,1)","line":{"color":"rgba(51,87,255,1)"}},"textfont":{"color":"rgba(51,87,255,1)"},"error_y":{"color":"rgba(51,87,255,1)"},"error_x":{"color":"rgba(51,87,255,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["0","0.33","0.67","1"],"y":[-0.87401560171800274,-0.78972155723088244,-0.81808629597190907,-0.86187336676445148],"type":"scatter","mode":"lines","line":{"color":"rgba(255,51,161,1)","width":1},"showlegend":false,"legendgroup":"iss_immig_immLess","hoverinfo":["none","none","none","none"],"name":"iss_immig_immLess","marker":{"color":"rgba(255,51,161,1)","line":{"color":"rgba(255,51,161,1)"}},"textfont":{"color":"rgba(255,51,161,1)"},"error_y":{"color":"rgba(255,51,161,1)"},"error_x":{"color":"rgba(255,51,161,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["0","0.33","0.67","1"],"y":[-0.86219706549404285,-0.82173527420456971,-0.78100866954266968,-0.84223521758770747],"type":"scatter","mode":"lines","line":{"color":"rgba(255,215,0,1)","width":1},"showlegend":false,"legendgroup":"iss_laic_relSignsTeachersNo","hoverinfo":["none","none","none","none"],"name":"iss_laic_relSignsTeachersNo","marker":{"color":"rgba(255,215,0,1)","line":{"color":"rgba(255,215,0,1)"}},"textfont":{"color":"rgba(255,215,0,1)"},"error_y":{"color":"rgba(255,215,0,1)"},"error_x":{"color":"rgba(255,215,0,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["0","0.33","0.67","1"],"y":[-0.86638369551603756,-0.80898134328774907,-0.78717874764863471,-0.858582134900433],"type":"scatter","mode":"lines","line":{"color":"rgba(255,140,0,1)","width":1},"showlegend":false,"legendgroup":"iss_laic_relSignsWorkNo","hoverinfo":["none","none","none","none"],"name":"iss_laic_relSignsWorkNo","marker":{"color":"rgba(255,140,0,1)","line":{"color":"rgba(255,140,0,1)"}},"textfont":{"color":"rgba(255,140,0,1)"},"error_y":{"color":"rgba(255,140,0,1)"},"error_x":{"color":"rgba(255,140,0,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["0","0.33","0.67","1"],"y":[-0.82225426084254882,-0.78880683775328275,-0.82661375226176725,-0.85387865235473626],"type":"scatter","mode":"lines","line":{"color":"rgba(138,43,226,1)","width":1},"showlegend":false,"legendgroup":"iss_lang_businessFrench","hoverinfo":["none","none","none","none"],"name":"iss_lang_businessFrench","marker":{"color":"rgba(138,43,226,1)","line":{"color":"rgba(138,43,226,1)"}},"textfont":{"color":"rgba(138,43,226,1)"},"error_y":{"color":"rgba(138,43,226,1)"},"error_x":{"color":"rgba(138,43,226,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["0","0.33","0.67","1"],"y":[-0.81497086632007587,-0.82007898424380121,-0.81618146185213325,-0.84712260311770704],"type":"scatter","mode":"lines","line":{"color":"rgba(0,206,209,1)","width":1},"showlegend":false,"legendgroup":"iss_lang_englishCegep","hoverinfo":["none","none","none","none"],"name":"iss_lang_englishCegep","marker":{"color":"rgba(0,206,209,1)","line":{"color":"rgba(0,206,209,1)"}},"textfont":{"color":"rgba(0,206,209,1)"},"error_y":{"color":"rgba(0,206,209,1)"},"error_x":{"color":"rgba(0,206,209,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["0","0.33","0.67","1"],"y":[-0.72761200519307734,-0.72427515100073014,-0.70063178157341732,-0.77782917581350919],"type":"scatter","mode":"lines","line":{"color":"rgba(220,20,60,1)","width":1},"showlegend":false,"legendgroup":"iss_lang_worriedFrMtl","hoverinfo":["none","none","none","none"],"name":"iss_lang_worriedFrMtl","marker":{"color":"rgba(220,20,60,1)","line":{"color":"rgba(220,20,60,1)"}},"textfont":{"color":"rgba(220,20,60,1)"},"error_y":{"color":"rgba(220,20,60,1)"},"error_x":{"color":"rgba(220,20,60,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["0","0.33","0.67","1"],"y":[-0.74959822926882314,-0.72109820747925546,-0.74847361521431377,-0.81272347379302756],"type":"scatter","mode":"lines","line":{"color":"rgba(0,255,127,1)","width":1},"showlegend":false,"legendgroup":"iss_lang_worriedFrProv","hoverinfo":["none","none","none","none"],"name":"iss_lang_worriedFrProv","marker":{"color":"rgba(0,255,127,1)","line":{"color":"rgba(0,255,127,1)"}},"textfont":{"color":"rgba(0,255,127,1)"},"error_y":{"color":"rgba(0,255,127,1)"},"error_x":{"color":"rgba(0,255,127,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["0","0.33","0.67","1"],"y":[-0.8193508913841141,-0.69450876907317927,-0.61073830936647844,-0.59557683011514473],"type":"scatter","mode":"lines","line":{"color":"rgba(255,20,147,1)","width":1},"showlegend":false,"legendgroup":"iss_liberty_qcMissLiberty","hoverinfo":["none","none","none","none"],"name":"iss_liberty_qcMissLiberty","marker":{"color":"rgba(255,20,147,1)","line":{"color":"rgba(255,20,147,1)"}},"textfont":{"color":"rgba(255,20,147,1)"},"error_y":{"color":"rgba(255,20,147,1)"},"error_x":{"color":"rgba(255,20,147,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["0","0.33","0.67","1"],"y":[-0.76656224774190551,-0.76049166307575211,-0.7483718893800545,-0.77776065921969961],"type":"scatter","mode":"lines","line":{"color":"rgba(127,255,0,1)","width":1},"showlegend":false,"legendgroup":"iss_lien3_accord","hoverinfo":["none","none","none","none"],"name":"iss_lien3_accord","marker":{"color":"rgba(127,255,0,1)","line":{"color":"rgba(127,255,0,1)"}},"textfont":{"color":"rgba(127,255,0,1)"},"error_y":{"color":"rgba(127,255,0,1)"},"error_x":{"color":"rgba(127,255,0,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["0","0.33","0.67","1"],"y":[-0.81108985323738758,-0.74259915927909803,-0.78747979997439632,-0.73875042098977328],"type":"scatter","mode":"lines","line":{"color":"rgba(255,69,0,1)","width":1},"showlegend":false,"legendgroup":"iss_lien3_accordDim","hoverinfo":["none","none","none","none"],"name":"iss_lien3_accordDim","marker":{"color":"rgba(255,69,0,1)","line":{"color":"rgba(255,69,0,1)"}},"textfont":{"color":"rgba(255,69,0,1)"},"error_y":{"color":"rgba(255,69,0,1)"},"error_x":{"color":"rgba(255,69,0,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["0","0.33","0.67","1"],"y":[-0.78473280487200014,-0.77820937578178562,-0.84777785009743778,-0.90065238847763984],"type":"scatter","mode":"lines","line":{"color":"rgba(46,139,87,1)","width":1},"showlegend":false,"legendgroup":"iss_nationalisme_souv","hoverinfo":["none","none","none","none"],"name":"iss_nationalisme_souv","marker":{"color":"rgba(46,139,87,1)","line":{"color":"rgba(46,139,87,1)"}},"textfont":{"color":"rgba(46,139,87,1)"},"error_y":{"color":"rgba(46,139,87,1)"},"error_x":{"color":"rgba(46,139,87,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["0","0.33","0.67","1"],"y":[-0.84136006565890931,-0.83963774531327839,-0.79093088210757523,-0.84734728542588855],"type":"scatter","mode":"lines","line":{"color":"rgba(218,165,32,1)","width":1},"showlegend":false,"legendgroup":"iss_newleft_wokeArtists","hoverinfo":["none","none","none","none"],"name":"iss_newleft_wokeArtists","marker":{"color":"rgba(218,165,32,1)","line":{"color":"rgba(218,165,32,1)"}},"textfont":{"color":"rgba(218,165,32,1)"},"error_y":{"color":"rgba(218,165,32,1)"},"error_x":{"color":"rgba(218,165,32,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["0","0.33","0.67","1"],"y":[-0.79328771122107644,-0.75412073739928542,-0.67651222824344226,-0.78886319728237331],"type":"scatter","mode":"lines","line":{"color":"rgba(148,0,211,1)","width":1},"showlegend":false,"legendgroup":"iss_newleft_wokeCensor","hoverinfo":["none","none","none","none"],"name":"iss_newleft_wokeCensor","marker":{"color":"rgba(148,0,211,1)","line":{"color":"rgba(148,0,211,1)"}},"textfont":{"color":"rgba(148,0,211,1)"},"error_y":{"color":"rgba(148,0,211,1)"},"error_x":{"color":"rgba(148,0,211,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["0","0.33","0.67","1"],"y":[-0.8863821408901924,-0.7546852507648949,-0.70302034982016859,-0.80165117426555232],"type":"scatter","mode":"lines","line":{"color":"rgba(70,130,180,1)","width":1},"showlegend":false,"legendgroup":"iss_newleft_wokeSysRaci","hoverinfo":["none","none","none","none"],"name":"iss_newleft_wokeSysRaci","marker":{"color":"rgba(70,130,180,1)","line":{"color":"rgba(70,130,180,1)"}},"textfont":{"color":"rgba(70,130,180,1)"},"error_y":{"color":"rgba(70,130,180,1)"},"error_x":{"color":"rgba(70,130,180,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["0","0.33","0.67","1"],"y":[-0.8055376270461142,-0.71996672453988253,-0.79933366398425398,-0.84414563404075793],"type":"scatter","mode":"lines","line":{"color":"rgba(255,99,71,1)","width":1},"showlegend":false,"legendgroup":"iss_newleft_wokenoWhites","hoverinfo":["none","none","none","none"],"name":"iss_newleft_wokenoWhites","marker":{"color":"rgba(255,99,71,1)","line":{"color":"rgba(255,99,71,1)"}},"textfont":{"color":"rgba(255,99,71,1)"},"error_y":{"color":"rgba(255,99,71,1)"},"error_x":{"color":"rgba(255,99,71,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["0.67","0","0.33","1"],"y":[-0.73740746805942436,-0.90445384676756146,-0.72024413696521739,-0.78490936377698772],"type":"scatter","mode":"markers","legendgroup":"iss_enviro_envGvtMore","name":"Govt should protect<br>environment more","marker":{"color":"rgba(255,87,51,1)","size":11,"line":{"color":"rgba(255,87,51,1)"}},"error_y":{"color":"rgba(255,87,51,1)","array":[0.05067966140289526,0.053894470765038727,0.054511405062589113,0.054511029638748321]},"text":["Govt should protect<br>environment more, <br />Acquired votes in segment<br>█░░░░░░░░░ 7%","Govt should protect<br>environment more, Completely disagree<br />Acquired votes in segment<br>█░░░░░░░░░ 9%","Govt should protect<br>environment more, <br />Acquired votes in segment<br>█░░░░░░░░░ 9%","Govt should protect<br>environment more, Completely agree<br />Acquired votes in segment<br>░░░░░░░░░░ 5%"],"hoverinfo":["text","text","text","text"],"textfont":{"color":"rgba(255,87,51,1)"},"error_x":{"color":"rgba(255,87,51,1)"},"line":{"color":"rgba(255,87,51,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["0.67","0","0.33","1"],"y":[-0.74528377380581889,-0.74395836008097715,-0.72076851340421799,-0.77971975924862169],"type":"scatter","mode":"markers","legendgroup":"iss_immig_immAdapt","name":"Immigrants should adapt","marker":{"color":"rgba(51,255,87,1)","size":11,"line":{"color":"rgba(51,255,87,1)"}},"error_y":{"color":"rgba(51,255,87,1)","array":[0.069190513912880003,0.090307835692492788,0.077223579531574438,0.071817153225176122]},"text":["Immigrants should adapt, <br />Acquired votes in segment<br>█░░░░░░░░░ 6%","Immigrants should adapt, Completely disagree<br />Acquired votes in segment<br>░░░░░░░░░░ 1%","Immigrants should adapt, <br />Acquired votes in segment<br>░░░░░░░░░░ 5%","Immigrants should adapt, Completely agree<br />Acquired votes in segment<br>█░░░░░░░░░ 6%"],"hoverinfo":["text","text","text","text"],"textfont":{"color":"rgba(51,255,87,1)"},"error_x":{"color":"rgba(51,255,87,1)"},"line":{"color":"rgba(51,255,87,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["1","0","0.33","0.67"],"y":[-0.85643531840007181,-0.91062855665130837,-0.89474982922684765,-0.78346181555579297],"type":"scatter","mode":"markers","legendgroup":"iss_immig_immLearnFr","name":"Immigrants learn French","marker":{"color":"rgba(51,87,255,1)","size":11,"line":{"color":"rgba(51,87,255,1)"}},"error_y":{"color":"rgba(51,87,255,1)","array":[0.059900857622687376,0.079080928210869428,0.065660544766780959,0.071185147488479705]},"text":["Immigrants learn French, Strongly agree<br />Acquired votes in segment<br>░░░░░░░░░░ 2%","Immigrants learn French, Strongly disagree<br />Acquired votes in segment<br>█░░░░░░░░░ 9%","Immigrants learn French, <br />Acquired votes in segment<br>█░░░░░░░░░ 6%","Immigrants learn French, <br />Acquired votes in segment<br>░░░░░░░░░░ 3%"],"hoverinfo":["text","text","text","text"],"textfont":{"color":"rgba(51,87,255,1)"},"error_x":{"color":"rgba(51,87,255,1)"},"line":{"color":"rgba(51,87,255,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["0.67","0","0.33","1"],"y":[-0.81808629597190907,-0.87401560171800274,-0.78972155723088244,-0.86187336676445148],"type":"scatter","mode":"markers","legendgroup":"iss_immig_immLess","name":"More immigrants in QC","marker":{"color":"rgba(255,51,161,1)","size":11,"line":{"color":"rgba(255,51,161,1)"}},"error_y":{"color":"rgba(255,51,161,1)","array":[0.090661476461132651,0.17311942213269571,0.11999136051962933,0.094548913701085535]},"text":["More immigrants in QC, <br />Acquired votes in segment<br>░░░░░░░░░░ 2%","More immigrants in QC, Strongly agree<br />Acquired votes in segment<br>█░░░░░░░░░ 6%","More immigrants in QC, <br />Acquired votes in segment<br>░░░░░░░░░░ 3%","More immigrants in QC, Strongly disagree<br />Acquired votes in segment<br>░░░░░░░░░░ 2%"],"hoverinfo":["text","text","text","text"],"textfont":{"color":"rgba(255,51,161,1)"},"error_x":{"color":"rgba(255,51,161,1)"},"line":{"color":"rgba(255,51,161,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["0","0.33","0.67","1"],"y":[-0.86219706549404285,-0.82173527420456971,-0.78100866954266968,-0.84223521758770747],"type":"scatter","mode":"markers","legendgroup":"iss_laic_relSignsTeachersNo","name":"Teachers wear religious symbols","marker":{"color":"rgba(255,215,0,1)","size":11,"line":{"color":"rgba(255,215,0,1)"}},"error_y":{"color":"rgba(255,215,0,1)","array":[0.095962532885934482,0.10117922556174996,0.10143406047871639,0.12687979670937299]},"text":["Teachers wear religious symbols, Strongly agree<br />Acquired votes in segment<br>░░░░░░░░░░ 2%","Teachers wear religious symbols, <br />Acquired votes in segment<br>░░░░░░░░░░ 3%","Teachers wear religious symbols, <br />Acquired votes in segment<br>░░░░░░░░░░ 3%","Teachers wear religious symbols, Strongly disagree<br />Acquired votes in segment<br>░░░░░░░░░░ 2%"],"hoverinfo":["text","text","text","text"],"textfont":{"color":"rgba(255,215,0,1)"},"error_x":{"color":"rgba(255,215,0,1)"},"line":{"color":"rgba(255,215,0,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["0","0.33","0.67","1"],"y":[-0.86638369551603756,-0.80898134328774907,-0.78717874764863471,-0.858582134900433],"type":"scatter","mode":"markers","legendgroup":"iss_laic_relSignsWorkNo","name":"State employees wear<br>religious symbols","marker":{"color":"rgba(255,140,0,1)","size":11,"line":{"color":"rgba(255,140,0,1)"}},"error_y":{"color":"rgba(255,140,0,1)","array":[0.093128240872814461,0.097480355265378793,0.11238650943512618,0.13761739032513398]},"text":["State employees wear<br>religious symbols, Strongly agree<br />Acquired votes in segment<br>░░░░░░░░░░ 2%","State employees wear<br>religious symbols, <br />Acquired votes in segment<br>░░░░░░░░░░ 2%","State employees wear<br>religious symbols, <br />Acquired votes in segment<br>░░░░░░░░░░ 3%","State employees wear<br>religious symbols, Strongly disagree<br />Acquired votes in segment<br>░░░░░░░░░░ 3%"],"hoverinfo":["text","text","text","text"],"textfont":{"color":"rgba(255,140,0,1)"},"error_x":{"color":"rgba(255,140,0,1)"},"line":{"color":"rgba(255,140,0,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["0.67","0","0.33","1"],"y":[-0.82661375226176725,-0.82225426084254882,-0.78880683775328275,-0.85387865235473626],"type":"scatter","mode":"markers","legendgroup":"iss_lang_businessFrench","name":"French only in businesses","marker":{"color":"rgba(138,43,226,1)","size":11,"line":{"color":"rgba(138,43,226,1)"}},"error_y":{"color":"rgba(138,43,226,1)","array":[0.091226652865370572,0.10948627622057916,0.096477250341789444,0.10121679893883062]},"text":["French only in businesses, <br />Acquired votes in segment<br>░░░░░░░░░░ 2%","French only in businesses, Strongly disagree<br />Acquired votes in segment<br>█░░░░░░░░░ 7%","French only in businesses, <br />Acquired votes in segment<br>░░░░░░░░░░ 4%","French only in businesses, Strongly agree<br />Acquired votes in segment<br>░░░░░░░░░░ 1%"],"hoverinfo":["text","text","text","text"],"textfont":{"color":"rgba(138,43,226,1)"},"error_x":{"color":"rgba(138,43,226,1)"},"line":{"color":"rgba(138,43,226,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["1","0","0.33","0.67"],"y":[-0.84712260311770704,-0.81497086632007587,-0.82007898424380121,-0.81618146185213325],"type":"scatter","mode":"markers","legendgroup":"iss_lang_englishCegep","name":"French test for Anglophone CEGEPs","marker":{"color":"rgba(0,206,209,1)","size":11,"line":{"color":"rgba(0,206,209,1)"}},"error_y":{"color":"rgba(0,206,209,1)","array":[0.044024379866423491,0.048704075874745456,0.059085484199677629,0.072445442826405304]},"text":["French test for Anglophone CEGEPs, Strongly agree<br />Acquired votes in segment<br>░░░░░░░░░░ 2%","French test for Anglophone CEGEPs, Strongly disagree<br />Acquired votes in segment<br>██░░░░░░░░ 15%","French test for Anglophone CEGEPs, <br />Acquired votes in segment<br>█░░░░░░░░░ 8%","French test for Anglophone CEGEPs, <br />Acquired votes in segment<br>░░░░░░░░░░ 2%"],"hoverinfo":["text","text","text","text"],"textfont":{"color":"rgba(0,206,209,1)"},"error_x":{"color":"rgba(0,206,209,1)"},"line":{"color":"rgba(0,206,209,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["0.67","0","0.33","1"],"y":[-0.70063178157341732,-0.72761200519307734,-0.72427515100073014,-0.77782917581350919],"type":"scatter","mode":"markers","legendgroup":"iss_lang_worriedFrMtl","name":"Worried about French in MTL","marker":{"color":"rgba(220,20,60,1)","size":11,"line":{"color":"rgba(220,20,60,1)"}},"error_y":{"color":"rgba(220,20,60,1)","array":[0.091081042794451728,0.17005385914263116,0.12310765734172602,0.092171441617612815]},"text":["Worried about French in MTL, <br />Acquired votes in segment<br>█░░░░░░░░░ 9%","Worried about French in MTL, Not worried at all<br />Acquired votes in segment<br>███░░░░░░░ 30%","Worried about French in MTL, <br />Acquired votes in segment<br>█░░░░░░░░░ 15%","Worried about French in MTL, Very worried<br />Acquired votes in segment<br>░░░░░░░░░░ 4%"],"hoverinfo":["text","text","text","text"],"textfont":{"color":"rgba(220,20,60,1)"},"error_x":{"color":"rgba(220,20,60,1)"},"line":{"color":"rgba(220,20,60,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["0.67","0","0.33","1"],"y":[-0.74847361521431377,-0.74959822926882314,-0.72109820747925546,-0.81272347379302756],"type":"scatter","mode":"markers","legendgroup":"iss_lang_worriedFrProv","name":"Worried about French in province","marker":{"color":"rgba(0,255,127,1)","size":11,"line":{"color":"rgba(0,255,127,1)"}},"error_y":{"color":"rgba(0,255,127,1)","array":[0.062209489237430193,0.064148039745586694,0.066064297090117297,0.071618243379633406]},"text":["Worried about French in province, <br />Acquired votes in segment<br>█░░░░░░░░░ 7%","Worried about French in province, Not worried at all<br />Acquired votes in segment<br>███░░░░░░░ 27%","Worried about French in province, <br />Acquired votes in segment<br>█░░░░░░░░░ 13%","Worried about French in province, Very worried<br />Acquired votes in segment<br>░░░░░░░░░░ 5%"],"hoverinfo":["text","text","text","text"],"textfont":{"color":"rgba(0,255,127,1)"},"error_x":{"color":"rgba(0,255,127,1)"},"line":{"color":"rgba(0,255,127,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["0","0.33","0.67","1"],"y":[-0.8193508913841141,-0.69450876907317927,-0.61073830936647844,-0.59557683011514473],"type":"scatter","mode":"markers","legendgroup":"iss_liberty_qcMissLiberty","name":"Citizens lack freedom in QC","marker":{"color":"rgba(255,20,147,1)","size":11,"line":{"color":"rgba(255,20,147,1)"}},"error_y":{"color":"rgba(255,20,147,1)","array":[0.079572782661684993,0.093842464388485758,0.090098481253086504,0.097432170069694068]},"text":["Citizens lack freedom in QC, Completely disagree<br />Acquired votes in segment<br>░░░░░░░░░░ 3%","Citizens lack freedom in QC, <br />Acquired votes in segment<br>█░░░░░░░░░ 10%","Citizens lack freedom in QC, <br />Acquired votes in segment<br>██░░░░░░░░ 25%","Citizens lack freedom in QC, Completely agree<br />Acquired votes in segment<br>█████░░░░░ 54%"],"hoverinfo":["text","text","text","text"],"textfont":{"color":"rgba(255,20,147,1)"},"error_x":{"color":"rgba(255,20,147,1)"},"line":{"color":"rgba(255,20,147,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["0.67","0","0.33","1"],"y":[-0.7483718893800545,-0.76656224774190551,-0.76049166307575211,-0.77776065921969961],"type":"scatter","mode":"markers","legendgroup":"iss_lien3_accord","name":"Support third link project","marker":{"color":"rgba(127,255,0,1)","size":11,"line":{"color":"rgba(127,255,0,1)"}},"error_y":{"color":"rgba(127,255,0,1)","array":[0.075511846406602801,0.14367293802257697,0.10877404707037008,0.078131094338461105]},"text":["Support third link project, <br />Acquired votes in segment<br>██░░░░░░░░ 22%","Support third link project, Strongly disagree<br />Acquired votes in segment<br>██░░░░░░░░ 22%","Support third link project, <br />Acquired votes in segment<br>██░░░░░░░░ 24%","Support third link project, Strongly agree<br />Acquired votes in segment<br>██░░░░░░░░ 22%"],"hoverinfo":["text","text","text","text"],"textfont":{"color":"rgba(127,255,0,1)"},"error_x":{"color":"rgba(127,255,0,1)"},"line":{"color":"rgba(127,255,0,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["0.67","0","0.33","1"],"y":[-0.78747979997439632,-0.81108985323738758,-0.74259915927909803,-0.73875042098977328],"type":"scatter","mode":"markers","legendgroup":"iss_lien3_accordDim","name":"Support scaled-down third link","marker":{"color":"rgba(255,69,0,1)","size":11,"line":{"color":"rgba(255,69,0,1)"}},"error_y":{"color":"rgba(255,69,0,1)","array":[0.077808088751178617,0.11834446773520879,0.092165241740008175,0.078264824981465253]},"text":["Support scaled-down third link, <br />Acquired votes in segment<br>███░░░░░░░ 26%","Support scaled-down third link, Strongly disagree<br />Acquired votes in segment<br>███░░░░░░░ 27%","Support scaled-down third link, <br />Acquired votes in segment<br>███░░░░░░░ 30%","Support scaled-down third link, Strongly agree<br />Acquired votes in segment<br>███░░░░░░░ 30%"],"hoverinfo":["text","text","text","text"],"textfont":{"color":"rgba(255,69,0,1)"},"error_x":{"color":"rgba(255,69,0,1)"},"line":{"color":"rgba(255,69,0,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["0","0.33","0.67","1"],"y":[-0.78473280487200014,-0.77820937578178562,-0.84777785009743778,-0.90065238847763984],"type":"scatter","mode":"markers","legendgroup":"iss_nationalisme_souv","name":"Quebec independence","marker":{"color":"rgba(46,139,87,1)","size":11,"line":{"color":"rgba(46,139,87,1)"}},"error_y":{"color":"rgba(46,139,87,1)","array":[0.077972411217923088,0.082188524075995306,0.089733451135702524,0.10563130385655717]},"text":["Quebec independence, Federalist<br />Acquired votes in segment<br>█░░░░░░░░░ 15%","Quebec independence, <br />Acquired votes in segment<br>█░░░░░░░░░ 9%","Quebec independence, <br />Acquired votes in segment<br>█░░░░░░░░░ 5%","Quebec independence, Sovereignist<br />Acquired votes in segment<br>░░░░░░░░░░ 4%"],"hoverinfo":["text","text","text","text"],"textfont":{"color":"rgba(46,139,87,1)"},"error_x":{"color":"rgba(46,139,87,1)"},"line":{"color":"rgba(46,139,87,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["0","0.33","0.67","1"],"y":[-0.84136006565890931,-0.83963774531327839,-0.79093088210757523,-0.84734728542588855],"type":"scatter","mode":"markers","legendgroup":"iss_newleft_wokeArtists","name":"Artists continue careers<br>despite misconduct","marker":{"color":"rgba(218,165,32,1)","size":11,"line":{"color":"rgba(218,165,32,1)"}},"error_y":{"color":"rgba(218,165,32,1)","array":[0.077669167572548492,0.08247896471449534,0.091490933926640761,0.10378745030264958]},"text":["Artists continue careers<br>despite misconduct, Strongly agree<br />Acquired votes in segment<br>░░░░░░░░░░ 2%","Artists continue careers<br>despite misconduct, <br />Acquired votes in segment<br>░░░░░░░░░░ 2%","Artists continue careers<br>despite misconduct, <br />Acquired votes in segment<br>░░░░░░░░░░ 2%","Artists continue careers<br>despite misconduct, Strongly disagree<br />Acquired votes in segment<br>░░░░░░░░░░ 3%"],"hoverinfo":["text","text","text","text"],"textfont":{"color":"rgba(218,165,32,1)"},"error_x":{"color":"rgba(218,165,32,1)"},"line":{"color":"rgba(218,165,32,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["0","0.33","0.67","1"],"y":[-0.79328771122107644,-0.75412073739928542,-0.67651222824344226,-0.78886319728237331],"type":"scatter","mode":"markers","legendgroup":"iss_newleft_wokeCensor","name":"Censor offensive works","marker":{"color":"rgba(148,0,211,1)","size":11,"line":{"color":"rgba(148,0,211,1)"}},"error_y":{"color":"rgba(148,0,211,1)","array":[0.073756484879434869,0.12965092254612293,0.12655635876237431,0.076933480663895715]},"text":["Censor offensive works, Completely disagree<br />Acquired votes in segment<br>█░░░░░░░░░ 10%","Censor offensive works, <br />Acquired votes in segment<br>█░░░░░░░░░ 7%","Censor offensive works, <br />Acquired votes in segment<br>█░░░░░░░░░ 5%","Censor offensive works, Completely agree<br />Acquired votes in segment<br>█░░░░░░░░░ 9%"],"hoverinfo":["text","text","text","text"],"textfont":{"color":"rgba(148,0,211,1)"},"error_x":{"color":"rgba(148,0,211,1)"},"line":{"color":"rgba(148,0,211,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["0.67","0","0.33","1"],"y":[-0.70302034982016859,-0.8863821408901924,-0.7546852507648949,-0.80165117426555232],"type":"scatter","mode":"markers","legendgroup":"iss_newleft_wokeSysRaci","name":"Systemic racism in QC","marker":{"color":"rgba(70,130,180,1)","size":11,"line":{"color":"rgba(70,130,180,1)"}},"error_y":{"color":"rgba(70,130,180,1)","array":[0.076549660070162173,0.11076880807797851,0.09990950212687244,0.087728182902443552]},"text":["Systemic racism in QC, <br />Acquired votes in segment<br>█░░░░░░░░░ 6%","Systemic racism in QC, Completely disagree<br />Acquired votes in segment<br>█░░░░░░░░░ 9%","Systemic racism in QC, <br />Acquired votes in segment<br>█░░░░░░░░░ 7%","Systemic racism in QC, Completely agree<br />Acquired votes in segment<br>░░░░░░░░░░ 4%"],"hoverinfo":["text","text","text","text"],"textfont":{"color":"rgba(70,130,180,1)"},"error_x":{"color":"rgba(70,130,180,1)"},"line":{"color":"rgba(70,130,180,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["0.33","0","0.67","1"],"y":[-0.71996672453988253,-0.8055376270461142,-0.79933366398425398,-0.84414563404075793],"type":"scatter","mode":"markers","legendgroup":"iss_newleft_wokenoWhites","name":"Whites step aside for minorities","marker":{"color":"rgba(255,99,71,1)","size":11,"line":{"color":"rgba(255,99,71,1)"}},"error_y":{"color":"rgba(255,99,71,1)","array":[0.088019978919836594,0.080803730059100687,0.085322753566526632,0.13172597636399819]},"text":["Whites step aside for minorities, <br />Acquired votes in segment<br>█░░░░░░░░░ 8%","Whites step aside for minorities, Completely disagree<br />Acquired votes in segment<br>█░░░░░░░░░ 13%","Whites step aside for minorities, <br />Acquired votes in segment<br>█░░░░░░░░░ 6%","Whites step aside for minorities, Completely agree<br />Acquired votes in segment<br>░░░░░░░░░░ 3%"],"hoverinfo":["text","text","text","text"],"textfont":{"color":"rgba(255,99,71,1)"},"error_x":{"color":"rgba(255,99,71,1)"},"line":{"color":"rgba(255,99,71,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<p><span style="font-size: 9pt;">Diamonds indicate the party’s position on the issue. Data from 2022.</span></p>
+
+
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

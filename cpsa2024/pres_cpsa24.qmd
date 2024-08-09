@@ -6,8 +6,8 @@ format:
     theme: dark
     incremental: true
     fontsize: 31pt
-  pdf:
-    fontsize: 31pt
+#  pdf:
+#    fontsize: 31pt
 title-slide-attributes: 
   data-notes: "Hello, I am Hubert Cadieux. Today, I present the beginning of my thesis project on the potential for growth of political parties by studying the case of Quebec. A topic that needs to be well-theorized and conceptualized before it can be operationalized and studied in a more systematic context, in order to interpret and make strategic recommendations based on observational data.<br>
 The concept is somewhat used in media articles, for example, without really being theorized and validated."
@@ -369,7 +369,7 @@ get_graph <- function(issue_slug, choices, xlabel){
                               font = list(size = 12),
                               showarrow = FALSE,
                               xref = 'paper', x = 0,
-                              yref = 'paper', y = -0.35)
+                              yref = 'paper', y = -5)
   )
   return(p)
 }
@@ -396,6 +396,8 @@ are these positions optimal?
 #| out-width: "100%"
 #| out-height: "100%"
 #| fig-format: svg
+#| cache: true
+#| error: true
 
 # Souverainete -------------------------------------------------------------------
 
@@ -421,11 +423,14 @@ get_graph(issue_slug, choices, xlabel)
 
 ## [Dynamic]{style="color: #FF9800;"} Potential for Growth: Teachers' Religious Symbols
 
+
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 #| label: iss_laic_relSignsTeachersNo
 #| out-width: "100%"
 #| out-height: "100%"
 #| fig-format: svg
+#| cache: true
+#| error: true
 
 issue_slug <- "iss_laic_relSignsTeachersNo"
 choices <- c(
@@ -435,10 +440,9 @@ choices <- c(
   "0.75" = "Somewhat agree",
   "1" = "Strongly agree"
 )
-xlabel <- "Laicite"
+xlabel <- "Secularism"
 get_graph(issue_slug, choices, xlabel)
 ```
-
 
 
 ## Next Steps

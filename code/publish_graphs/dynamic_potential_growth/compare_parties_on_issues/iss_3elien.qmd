@@ -1,0 +1,52 @@
+---
+title: "Quebec 3rd link"
+format: html
+editor: visual
+---
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#| file: ../scripts/setting.R
+```
+
+## In All the Province
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#| label: iss_3elien
+#| fig-format: svg
+
+issue_slug <- "iss_lien3_accord"
+choices <- c(
+  "0" = "Strongly disagree",
+  "0.33" = "Somewhat disagree",
+  "0.67" = "Somewhat agree",
+  "1" = "Strongly agree"
+)
+xlabel <- "Position on Quebec City's 3rd link"
+potgrowth::get_quarto_graph(survey_data, issue_slug, party_positions, choices, xlabel)
+```
+
+[Diamonds indicate the parties' positions on the issue. Data from 2022.]{style="font-size: 9pt;"}
+
+## In Capitale-Nationale only
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#| label: iss_3elien2
+#| fig-format: svg
+
+survey_data2 <- survey_data[survey_data$region == "capitale_nationale", ]
+
+potgrowth::get_quarto_graph(survey_data2, issue_slug, party_positions, choices, xlabel,
+                            remove_variables_from_model = "region")
+```
+
+## In the Rest of the Province
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#| label: iss_3elien3
+#| fig-format: svg
+
+survey_data3 <- survey_data[survey_data$region != "capitale_nationale", ]
+
+potgrowth::get_quarto_graph(survey_data3, issue_slug, party_positions, choices, xlabel,
+                            remove_variables_from_model = "region")
+```

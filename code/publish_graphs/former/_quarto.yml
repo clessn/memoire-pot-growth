@@ -1,0 +1,8 @@
+website:
+  title: "Titre de votre site"
+  navbar:
+    left:
+      - text: "Quebec Independence"
+        href: content_documents/iss_souv.qmd
+  sidebar:
+    style: "floating"

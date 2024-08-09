@@ -1,0 +1,28 @@
+---
+title: "Systemic Racism"
+format: html
+editor: visual
+---
+
+<!-- {{< include ../scripts/setting.qmd >}} -->
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#| file: ../scripts/setting.R
+```
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#| label: code
+#| fig-format: svg
+
+issue_slug <- "iss_newleft_wokeSysRaci"
+choices <- c(
+  "0" = "Strongly disagree",
+  "0.33" = "Somewhat disagree",
+  "0.67" = "Somewhat agree",
+  "1" = "Strongly agree"
+)
+xlabel <- "There is systemic racism in Quebec"
+potgrowth::get_quarto_graph(survey_data, issue_slug, party_positions, choices, xlabel)
+```
+
+[Diamonds indicate the parties' positions on the issue. Data from 2022.]{style="font-size: 9pt;"}

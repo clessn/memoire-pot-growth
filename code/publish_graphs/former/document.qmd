@@ -14,10 +14,10 @@ library(ggplot2)
 library(plotly)
 
 # Data --------------------------------------------------------------------
-survey_data <- readRDS("../_SharedFolder_memoire-pot-growth/data/marts/cpsa2024/survey_data.rds")
+survey_data <- readRDS("../../../_SharedFolder_memoire-pot-growth/data/marts/cpsa2024/survey_data.rds")
 
 # Party positions ---------------------------------------------------------
-party_positions <- readRDS("../_SharedFolder_memoire-pot-growth/data/marts/cpsa2024/party_positions.rds") %>% 
+party_positions <- readRDS("../../../_SharedFolder_memoire-pot-growth/data/marts/cpsa2024/party_positions.rds") %>% 
   mutate(party_position = ifelse(party_position == 0.25 & issue == "iss_nationalisme_souv", 0.33, party_position),
          party_position = ifelse(party_position == 0.75 & issue == "iss_nationalisme_souv", 0.67, party_position))
 
@@ -75,7 +75,7 @@ get_graph <- function(issue_slug, choices, xlabel){
   # Créer le graphique Plotly avec des barres en arrière-plan et un axe y secondaire
   p <- plot_ly(
           colors = potgrowth::qc_party_colors,
-          width = 850, height = 550) %>% 
+          width = 650, height = 500) %>% 
   add_markers(data = party_positions,
               text = ~paste0(party, "'s position:\n", xticklabel),
               hoverinfo = "text",
@@ -133,21 +133,5 @@ get_graph <- function(issue_slug, choices, xlabel){
 ```
 
 
-```{r, echo=FALSE, message=FALSE, warning=FALSE}
-#| label: iss_souv
-#| out-width: "100%"
-#| out-height: "100%"
-#| fig-format: svg
+Hi!
 
-# Souverainete -------------------------------------------------------------------
-
-issue_slug <- "iss_nationalisme_souv"
-choices <- c(
-  "0" = "Strongly in favor\nof Quebec remaining\nin Canada",
-  "0.33" = "Moderately in favor\nof Quebec remaining\nin Canada",
-  "0.67" = "Moderately in favor\nof Quebec becoming\na sovereign country",
-  "1" = "Strongly in favor\nof Quebec becoming\na sovereign country"
-)
-xlabel <- "Position on Quebec independence"
-get_graph(issue_slug, choices, xlabel)
-```

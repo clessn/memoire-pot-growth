@@ -1,0 +1,54 @@
+project:
+  type: website
+
+website:
+  title: "Dynamic Potential for Growth"
+  sidebar:
+    style: "docked"
+    search: true
+    contents:
+      - section: "Welcome!"
+        contents:  
+          - href: home_files/index.qmd
+            text: Home
+          - href: home_files/methodology.qmd
+            text: Methodology
+          - href: home_files/guide_interpret.qmd
+            text: Guide to Interpret the Graphs
+          - href: home_files/about.qmd  
+            text: About
+          - href: home_files/play_yourself.qmd
+            text: Play with it Yourself!
+      - section: "Compare Parties on Issues"
+        contents:
+          - href: compare_parties_on_issues/iss_souv.qmd
+            text: Quebec Independence
+          - href: compare_parties_on_issues/iss_laicite.qmd
+            text: "Secularism: Teachers"
+          - href: compare_parties_on_issues/iss_3elien.qmd
+            text: "Quebec 3rd link"
+          - href: compare_parties_on_issues/iss_systemic_racism.qmd
+            text: "Systemic Racism"
+      - section: "Parties' Dashboards"
+        contents:
+          - href: parties_dashboards/caq.qmd
+            text: CAQ
+          - href: parties_dashboards/pq.qmd
+            text: PQ
+          - href: parties_dashboards/qlp.qmd
+            text: QLP
+          - href: parties_dashboards/qs.qmd
+            text: QS
+          - href: parties_dashboards/cpq.qmd
+            text: CPQ
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+    width: 6000
+    height: 6000
+
+
+

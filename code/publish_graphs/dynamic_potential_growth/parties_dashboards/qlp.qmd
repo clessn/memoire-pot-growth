@@ -1,0 +1,24 @@
+---
+title: "QLP Dashboard"
+format: html
+editor: visual
+---
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#| file: ../scripts/setting.R
+
+```
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#| label: all
+#| fig-format: svg
+
+potgrowth::get_quarto_party_dashboard(party = "PLQ",
+                                      survey_data = survey_data,
+                                      issues_df = issues_df,
+                                      party_positions,
+                                      remove_variables_from_models = NULL,
+                                      width = 692.5)
+```
+
+[Diamonds indicate the party's position on the issue. Data from 2022.]{style="font-size: 9pt;"}
