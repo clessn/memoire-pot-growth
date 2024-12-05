@@ -369,7 +369,7 @@ get_graph <- function(issue_slug, choices, xlabel){
                               font = list(size = 12),
                               showarrow = FALSE,
                               xref = 'paper', x = 0,
-                              yref = 'paper', y = -5)
+                              yref = 'paper', y = 0)
   )
   return(p)
 }
@@ -409,7 +409,8 @@ choices <- c(
   "1" = "Strongly in favor\nof Quebec becoming\na sovereign country"
 )
 xlabel <- "Position on Quebec independence"
-get_graph(issue_slug, choices, xlabel)
+plot <- get_graph(issue_slug, choices, xlabel)
+plot
 ```
 
 
@@ -431,6 +432,8 @@ get_graph(issue_slug, choices, xlabel)
 #| fig-format: svg
 #| cache: true
 #| error: true
+
+# Laicite -------------------------------------------------------------------
 
 issue_slug <- "iss_laic_relSignsTeachersNo"
 choices <- c(

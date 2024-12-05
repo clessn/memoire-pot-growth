@@ -1,0 +1,4 @@
+- source: presentation_officielle.qmd
+  quarto-pub:
+    - id: dd3aadf4-a9b1-4a51-9cfd-2de3430c6c34
+      url: 'https://hubcad25.quarto.pub/master_potential_for_growth'
