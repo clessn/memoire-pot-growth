@@ -1,5 +1,7 @@
 # memoire-pot-growth
 
+EDIT: ce repo est la version deprecated de mon mémoire. Le repo actuel de mon mémoire est maintenant: [memoire_pot_growth](https://github.com/clessn/memoire_pot_growth). 
+
 This repo contains all the code to reproduce analyses that will be the backbone of my master's thesis. The first attempts to explore these data were made in [this folder](https://github.com/clessn/riding-volatility/tree/main/memoire). This repo is built upon the explorations made in this folder and organizes it in a cleaner way.
 
 # Structure of the folders
